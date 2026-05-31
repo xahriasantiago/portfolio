@@ -15,22 +15,29 @@
     --purple: #6a4a8c; --purple-light: #f5f0fa;
     --page: #fafaf8; --white: #ffffff; --tag-bg: #eeecea;
   }
-  html { font-size: 16px; }
+  html { font-size: 16px; scroll-behavior: smooth; }
   body { font-family: 'DM Sans', sans-serif; background: var(--page); color: var(--ink); line-height: 1.65; font-weight: 400; -webkit-font-smoothing: antialiased; }
 
-  /* COVER */
-  .cover { min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; padding: 4rem; background: var(--white); page-break-after: always; }
-  .cover-top { display: flex; justify-content: space-between; }
+  /* MAX WIDTH */
+  .cover, .toc-page, .about-page, .project-page, .gis-page { max-width: 1400px; margin: 0 auto; }
+
+  /* COVER: two-column to use right-side whitespace */
+  .cover { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: auto 1fr auto; gap: 0 5rem; padding: 4rem; background: var(--white); page-break-after: always; }
+  .cover-top { grid-column: 1 / -1; display: flex; justify-content: space-between; margin-bottom: 2rem; }
   .cover-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); font-weight: 500; }
-  .cover-main { padding: 4rem 0; }
+  .cover-main { grid-column: 1; padding: 2rem 0; }
+  .cover-side { grid-column: 2; padding-top: 3rem; }
+  .cover-bottom { grid-column: 1 / -1; border-top: 1px solid var(--rule); padding-top: 2rem; margin-top: 2rem; display: flex; justify-content: space-between; align-items: flex-end; }
   .cover-eyebrow { font-size: 13px; color: var(--accent); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 1.5rem; }
   .cover-name { font-family: 'DM Serif Display', serif; font-size: 5.5rem; line-height: 1.0; color: var(--ink); margin-bottom: 1.5rem; }
-  .cover-subtitle { font-size: 1.25rem; color: var(--ink-mid); font-weight: 300; max-width: 480px; line-height: 1.6; }
+  .cover-subtitle { font-size: 1.1rem; color: var(--ink-mid); font-weight: 300; line-height: 1.7; }
   .cover-rule { width: 60px; height: 2px; background: var(--accent); margin: 2rem 0; }
-  .cover-bottom { display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid var(--rule); padding-top: 2rem; }
   .cover-contact { font-size: 13px; color: var(--ink-mid); line-height: 1.8; }
   .cover-contact a { color: var(--accent); text-decoration: none; }
   .cover-index { text-align: right; font-size: 12px; color: var(--ink-light); line-height: 2; }
+  .cover-side-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-light); font-weight: 500; margin-bottom: 0.5rem; margin-top: 1.5rem; }
+  .cover-side-label:first-child { margin-top: 0; }
+  .cover-side-value { font-size: 13px; color: var(--ink-mid); line-height: 1.6; }
 
   /* TOC */
   .toc-page { min-height: 100vh; padding: 4rem; background: var(--white); page-break-after: always; }
@@ -44,26 +51,32 @@
   .toc-tag { font-size: 11px; background: var(--tag-bg); color: var(--ink-mid); padding: 2px 8px; border-radius: 3px; }
 
   /* PROJECT PAGES */
-  .project-page { min-height: 100vh; padding: 4rem; background: var(--white); page-break-after: always; }
-  .project-page:last-child { page-break-after: auto; }
-  .project-header { display: grid; grid-template-columns: 1fr 240px; gap: 3rem; margin-bottom: 3rem; padding-bottom: 2.5rem; border-bottom: 1px solid var(--rule); }
-  .project-num { font-size: 11px; color: var(--ink-light); font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.75rem; }
-  .project-title { font-family: 'DM Serif Display', serif; font-size: 2.4rem; line-height: 1.15; margin-bottom: 0.75rem; }
-  .project-context { font-size: 14px; color: var(--ink-mid); }
-  .project-meta { display: flex; flex-direction: column; gap: 1rem; }
-  .meta-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-light); font-weight: 500; margin-bottom: 0.2rem; }
-  .meta-value { font-size: 13px; color: var(--ink-mid); line-height: 1.5; }
-  .award-badge { display: inline-flex; align-items: center; gap: 5px; background: var(--warm-light); color: var(--warm); font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 4px; margin-top: 0.25rem; }
-  .published-badge { display: inline-flex; align-items: center; gap: 5px; background: var(--accent-light); color: var(--accent); font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 4px; margin-top: 0.25rem; }
-  .project-body { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
-  .section-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-light); font-weight: 500; margin-bottom: 0.75rem; }
-  .project-overview { font-size: 1rem; line-height: 1.75; margin-bottom: 1.5rem; }
-  .contribution-block { margin-bottom: 1.75rem; }
-  .contribution-item { display: flex; gap: 0.75rem; margin-bottom: 0.75rem; font-size: 14px; color: var(--ink-mid); line-height: 1.6; }
-  .contribution-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 8px; }
-  .skills-block { margin-bottom: 1.75rem; }
-  .skills-grid { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
-  .skill-tag { font-size: 12px; background: var(--tag-bg); color: var(--ink-mid); padding: 4px 10px; border-radius: 4px; border: 1px solid var(--rule); }
+  .project-page { padding: 3rem 4rem 0; background: var(--white); page-break-after: always; border-top: 1px solid var(--rule); }
+  .project-page:first-of-type { border-top: none; }
+  .project-header { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem 4rem; margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--rule); }
+  .project-header-left { grid-column: 1; }
+  .project-header-right { grid-column: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem 1.5rem; align-content: start; }
+  .project-num { font-size: 10px; color: var(--ink-light); font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.6rem; }
+  .project-title { font-family: 'DM Serif Display', serif; font-size: 2.2rem; line-height: 1.15; margin-bottom: 0.6rem; }
+  .project-context { font-size: 13px; color: var(--ink-mid); }
+  .project-meta { display: contents; }
+  .meta-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-light); font-weight: 500; margin-bottom: 0.15rem; }
+  .meta-value { font-size: 12px; color: var(--ink-mid); line-height: 1.5; }
+  .award-badge { display: inline-flex; align-items: center; gap: 5px; background: var(--warm-light); color: var(--warm); font-size: 11px; font-weight: 500; padding: 3px 8px; border-radius: 4px; margin-top: 0.2rem; }
+  .published-badge { display: inline-flex; align-items: center; gap: 5px; background: var(--accent-light); color: var(--accent); font-size: 11px; font-weight: 500; padding: 3px 8px; border-radius: 4px; margin-top: 0.2rem; }
+  .project-body { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; padding-bottom: 3rem; }
+  .section-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-light); font-weight: 500; margin-bottom: 0.6rem; }
+  .project-overview { font-size: 0.95rem; line-height: 1.75; margin-bottom: 1.25rem; }
+  .contribution-block { margin-bottom: 1.5rem; }
+  .contribution-item { display: flex; gap: 0.75rem; margin-bottom: 0.6rem; font-size: 13.5px; color: var(--ink-mid); line-height: 1.6; }
+  .contribution-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 7px; }
+  .skills-block { margin-bottom: 1.5rem; }
+  .skills-grid { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.4rem; }
+  .skill-tag { font-size: 11.5px; background: var(--tag-bg); color: var(--ink-mid); padding: 3px 9px; border-radius: 4px; border: 1px solid var(--rule); }
+  .doc-links-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
+  .doc-link { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border: 1.5px solid var(--accent); border-radius: 4px; font-size: 12px; font-weight: 500; color: var(--accent); text-decoration: none; transition: background 0.15s; white-space: nowrap; }
+  .doc-link:hover { background: var(--accent-light); }
+  .doc-link::before { content: "↗"; font-size: 11px; }
 
   /* CALLOUTS */
   .callout { padding: 1.25rem 1.5rem; border-radius: 0 6px 6px 0; margin-bottom: 1.75rem; }
@@ -95,50 +108,104 @@
 
   /* GIS PAGE: TABBED */
   .gis-page { min-height: 100vh; padding: 4rem; background: var(--white); page-break-after: always; }
-  .tab-bar { display: flex; border-bottom: 2px solid var(--rule); margin-bottom: 2.5rem; }
+  .tab-bar { display: flex; flex-wrap: wrap; border-bottom: 2px solid var(--rule); margin-bottom: 2.5rem; }
   .tab-btn { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; color: var(--ink-light); background: none; border: none; border-bottom: 2px solid transparent; padding: 0.75rem 1.25rem; margin-bottom: -2px; cursor: pointer; transition: color 0.15s, border-color 0.15s; }
   .tab-btn:hover { color: var(--ink); }
   .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
-  .tab-panel { display: none; }
-  .tab-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .tab-panel { display: none !important; }
+  .tab-panel.active { display: grid !important; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 100%; }
+  .tab-panel.active > div { min-width: 0; }
   .tab-meta-row { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule); grid-column: 1 / -1; }
 
-  /* STICKY NAV */
-  .sticky-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,250,248,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--rule); display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 2rem; font-size: 12px; }
-  .sticky-nav-name { font-weight: 500; color: var(--ink); }
-  .sticky-nav-links { display: flex; gap: 1.5rem; }
-  .sticky-nav-links a { color: var(--ink-mid); text-decoration: none; transition: color 0.15s; }
-  .sticky-nav-links a:hover { color: var(--accent); }
-  body { padding-top: 40px; }
+  /* IMAGE SIZING */
+  .project-image { width: 100%; max-height: 320px; object-fit: contain; object-position: top left; border-radius: 4px; margin-top: 1.5rem; display: block; border: 1px solid var(--rule); background: var(--page); }
+  .project-image-caption { font-size: 12px; color: var(--ink-light); margin-top: 0.4rem; font-style: italic; }
 
-  /* ABOUT PAGE */
-  .about-page { min-height: 100vh; padding: 4rem; background: var(--white); page-break-after: always; }
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem; }
-  .about-intro { font-size: 1.15rem; line-height: 1.8; color: var(--ink); margin-bottom: 2rem; }
-  .about-block { margin-bottom: 2.5rem; }
-  .about-block p { font-size: 14px; color: var(--ink-mid); line-height: 1.75; margin-bottom: 0.75rem; }
-  .about-fun { background: var(--accent-light); border-left: 3px solid var(--accent); padding: 1.25rem 1.5rem; border-radius: 0 6px 6px 0; margin-top: 2rem; }
+  /* ABOUT PAGE: tighter spacing */
+  .about-page { padding: 4rem; background: var(--white); page-break-after: always; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 2rem; }
+  .about-intro { font-size: 1.1rem; line-height: 1.75; color: var(--ink); margin-bottom: 1.5rem; }
+  .about-block { margin-bottom: 1.5rem; }
+  .about-block p { font-size: 14px; color: var(--ink-mid); line-height: 1.75; margin-bottom: 0.5rem; }
+  .about-fun { background: var(--accent-light); border-left: 3px solid var(--accent); padding: 1.25rem 1.5rem; border-radius: 0 6px 6px 0; margin-top: 1.5rem; }
   .about-fun p { font-size: 14px; color: var(--ink-mid); line-height: 1.7; }
 
-  /* FIX CARTOGRAPHY TAB WIDTH */
-  .tab-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 100%; overflow-x: hidden; }
-  .tab-panel.active > div { min-width: 0; }
+  /* BACK TO TOP */
+  .back-to-top { position: fixed; bottom: 2rem; right: 2rem; background: var(--accent); color: white; border: none; border-radius: 50%; width: 42px; height: 42px; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15); z-index: 99; transition: opacity 0.2s; text-decoration: none; line-height: 1; }
+  .back-to-top:hover { opacity: 0.85; }
+  /* STICKY NAV + DROPDOWN */
+  .sticky-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,250,248,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid var(--rule); display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 2rem; font-size: 12px; }
+  .sticky-nav-name { font-weight: 500; color: var(--ink); }
+  .sticky-nav-right { display: flex; align-items: center; gap: 1.5rem; }
+  .sticky-nav-right a { color: var(--ink-mid); text-decoration: none; transition: color 0.15s; font-size: 12px; }
+  .sticky-nav-right a:hover { color: var(--accent); }
+  .nav-dropdown { position: relative; }
+  .nav-dropdown-btn { background: none; border: 1px solid var(--rule); border-radius: 4px; padding: 4px 10px; font-size: 12px; font-family: 'DM Sans', sans-serif; color: var(--ink-mid); cursor: pointer; display: flex; align-items: center; gap: 5px; transition: border-color 0.15s, color 0.15s; }
+  .nav-dropdown-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .nav-dropdown-btn::after { content: "▾"; font-size: 10px; }
+  .nav-dropdown-menu { display: none; position: absolute; right: 0; top: calc(100% + 6px); background: var(--white); border: 1px solid var(--rule); border-radius: 6px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); min-width: 300px; z-index: 200; overflow: hidden; }
+  .nav-dropdown-menu.open { display: block; }
+  .nav-dropdown-menu a { display: flex; align-items: baseline; gap: 0.75rem; padding: 0.65rem 1rem; font-size: 12px; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--rule); transition: background 0.1s; }
+  .nav-dropdown-menu a:last-child { border-bottom: none; }
+  .nav-dropdown-menu a:hover { background: var(--accent-light); }
+  .nav-item-num { font-size: 10px; color: var(--ink-light); font-weight: 500; letter-spacing: 0.08em; min-width: 18px; flex-shrink: 0; }
+  .nav-item-text { flex: 1; min-width: 0; }
+  .nav-item-title { font-weight: 500; font-size: 12px; color: var(--ink); }
+  .nav-item-category { font-size: 11px; color: var(--ink-light); margin-top: 1px; }
+  /* COVER EXTRAS */
+  .cover-availability { display: inline-block; margin-top: 1.25rem; font-size: 13px; color: var(--accent); font-weight: 500; background: var(--accent-light); padding: 5px 12px; border-radius: 20px; }
+  .featured-badge { display: inline-flex; align-items: center; gap: 5px; background: var(--accent-light); color: var(--accent); font-size: 11px; font-weight: 500; padding: 3px 9px; border-radius: 4px; margin-left: 0.5rem; vertical-align: middle; }
+  body { padding-top: 40px; }
+
+  @media print {
+    .sticky-nav { display: none; }
+    .back-to-top { display: none; }
     .tab-btn { display: none; }
     .tab-panel { display: grid !important; grid-template-columns: 1fr 1fr; gap: 3rem; page-break-before: always; }
     .tab-panel:first-of-type { page-break-before: avoid; }
+  }
+
+  @media (max-width: 768px) {
+    .cover { grid-template-columns: 1fr; }
+    .cover-side { display: none; }
+    .cover-top, .cover-bottom { grid-column: 1; }
+    .project-header { grid-template-columns: 1fr; }
+    .project-header-right { grid-template-columns: 1fr 1fr; }
+    .project-body { grid-template-columns: 1fr; }
+    .tab-panel.active { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; }
+    .cover-name { font-size: 3.5rem; }
+    .sticky-nav { padding: 0.6rem 1rem; }
+    .nav-dropdown-menu { min-width: 260px; }
   }
 </style>
 </head>
 <body>
 
+<div id="top"></div>
+
 <!-- STICKY NAV -->
 <nav class="sticky-nav">
   <span class="sticky-nav-name">Xahria Santiago</span>
-  <div class="sticky-nav-links">
+  <div class="sticky-nav-right">
     <a href="mailto:xahria.santiago@gmail.com">xahria.santiago@gmail.com</a>
     <a href="https://linkedin.com/in/xahria-santiago" target="_blank">LinkedIn</a>
+    <div class="nav-dropdown">
+      <button class="nav-dropdown-btn" onclick="toggleNav()">Projects</button>
+      <div class="nav-dropdown-menu" id="navMenu">
+        <a href="#project-01" onclick="closeNav()"><span class="nav-item-num">01</span><span class="nav-item-text"><div class="nav-item-title">El Pueblo Community Resource Study</div><div class="nav-item-category">Community Planning · Gold Award</div></span></a>
+        <a href="#project-02" onclick="closeNav()"><span class="nav-item-num">02</span><span class="nav-item-text"><div class="nav-item-title">Extreme Heat Vulnerability of Manufactured Housing</div><div class="nav-item-category">GIS Research · Published in Urban Studies</div></span></a>
+        <a href="#project-03" onclick="closeNav()"><span class="nav-item-num">03</span><span class="nav-item-text"><div class="nav-item-title">Barcelona Superblocks</div><div class="nav-item-category">Urban Design · Active Transportation</div></span></a>
+        <a href="#project-04" onclick="closeNav()"><span class="nav-item-num">04</span><span class="nav-item-text"><div class="nav-item-title">Rocinha: Urbanism of Brazil's Largest Favela</div><div class="nav-item-category">International Planning · Informal Settlements</div></span></a>
+        <a href="#project-05" onclick="closeNav()"><span class="nav-item-num">05</span><span class="nav-item-text"><div class="nav-item-title">GIS &amp; Spatial Analysis</div><div class="nav-item-category">6 Analyses · Water Demand · Site Suitability · Remote Sensing · Cartography</div></span></a>
+        <a href="#project-06" onclick="closeNav()"><span class="nav-item-num">06</span><span class="nav-item-text"><div class="nav-item-title">Chicago Environmental Action Plan</div><div class="nav-item-category">Environmental Planning · Climate Policy</div></span></a>
+        <a href="#project-07" onclick="closeNav()"><span class="nav-item-num">07</span><span class="nav-item-text"><div class="nav-item-title">Community Engagement &amp; Environmental Justice</div><div class="nav-item-category">UMD CEEJH Lab · EJ Research</div></span></a>
+      </div>
+    </div>
   </div>
 </nav>
+
+<a href="#top" class="back-to-top" title="Back to top">↑</a>
 
 <!-- COVER -->
 <div class="cover">
@@ -150,7 +217,23 @@
     <p class="cover-eyebrow">Urban Planning &amp; GIS Analysis</p>
     <h1 class="cover-name">Xahria<br>Santiago</h1>
     <div class="cover-rule"></div>
-    <p class="cover-subtitle">Urban planning, community engagement, GIS analysis, and policy research across community, regional, and international scales.</p>
+    <p class="cover-subtitle">Urban planner and GIS analyst working at the intersection of healthy community planning, environmental justice, and climate resilience. My work focuses on the question of who gets to live in a healthy place, and what it takes to change that.</p>
+    <span class="cover-availability">Open to healthy community, environmental, and climate planning roles in Canada</span>
+  </div>
+  <div class="cover-side">
+    <p class="cover-side-label">Focus areas</p>
+    <p class="cover-side-value">Healthy community planning</p>
+    <p class="cover-side-value">Environmental &amp; climate planning</p>
+    <p class="cover-side-value">Community engagement</p>
+    <p class="cover-side-value">GIS &amp; spatial analysis</p>
+    <p class="cover-side-value">Environmental justice</p>
+    <p class="cover-side-label">Education</p>
+    <p class="cover-side-value">MS Urban Planning, University of Arizona</p>
+    <p class="cover-side-value">Graduate Certificate in GIS, University of Arizona</p>
+    <p class="cover-side-value">BS Public Health Science, University of Maryland</p>
+    <p class="cover-side-label">Recognition</p>
+    <p class="cover-side-value">2023 Planning Excellence Gold Award</p>
+    <p class="cover-side-value">Published — Urban Studies, 2025</p>
   </div>
   <div class="cover-bottom">
     <div class="cover-contact">
@@ -158,11 +241,6 @@
       <div>(301) 312-0605</div>
       <div><a href="https://linkedin.com/in/xahria-santiago">linkedin.com/in/xahria-santiago</a></div>
       <div>Toronto, ON</div>
-    </div>
-    <div class="cover-index">
-      <div>MS Urban Planning, University of Arizona</div>
-      <div>Graduate Certificate in GIS, University of Arizona</div>
-      <div>BS Public Health Science, University of Maryland</div>
     </div>
   </div>
 </div>
@@ -173,7 +251,7 @@
   <div class="toc-item">
     <span class="toc-num">01</span>
     <div class="toc-content">
-      <div class="toc-title">El Pueblo Community Resource Study</div>
+      <div class="toc-title"><a href="#project-01" style="color:inherit;text-decoration:none;">El Pueblo Community Resource Study</a></div>
       <div class="toc-meta">Capstone, City of Tucson Planning Department &amp; University of Arizona, 2023</div>
       <div class="toc-tags"><span class="toc-tag">Community engagement</span><span class="toc-tag">Environmental justice</span><span class="toc-tag">Public health</span><span class="toc-tag">Stakeholder facilitation</span></div>
     </div>
@@ -181,7 +259,7 @@
   <div class="toc-item">
     <span class="toc-num">02</span>
     <div class="toc-content">
-      <div class="toc-title">Extreme Heat Vulnerability of Manufactured Housing</div>
+      <div class="toc-title"><a href="#project-02" style="color:inherit;text-decoration:none;">Extreme Heat Vulnerability of Manufactured Housing</a></div>
       <div class="toc-meta">Graduate Research, University of Arizona / SW-IFL, 2023–2024. Published in Urban Studies, 2025.</div>
       <div class="toc-tags"><span class="toc-tag">GIS</span><span class="toc-tag">Remote sensing</span><span class="toc-tag">Land cover classification</span><span class="toc-tag">Climate adaptation</span><span class="toc-tag">Peer-reviewed research</span></div>
     </div>
@@ -189,7 +267,7 @@
   <div class="toc-item">
     <span class="toc-num">03</span>
     <div class="toc-content">
-      <div class="toc-title">Barcelona Superblocks: Graduate City Report</div>
+      <div class="toc-title"><a href="#project-03" style="color:inherit;text-decoration:none;">Barcelona Superblocks: Graduate City Report</a></div>
       <div class="toc-meta">Academic, University of Arizona CAPLA, 2023</div>
       <div class="toc-tags"><span class="toc-tag">Active transportation</span><span class="toc-tag">Urban design</span><span class="toc-tag">Public health</span><span class="toc-tag">Traffic calming</span></div>
     </div>
@@ -197,7 +275,7 @@
   <div class="toc-item">
     <span class="toc-num">04</span>
     <div class="toc-content">
-      <div class="toc-title">Rocinha: Urbanism of Brazil's Largest Favela</div>
+      <div class="toc-title"><a href="#project-04" style="color:inherit;text-decoration:none;">Rocinha: Urbanism of Brazil's Largest Favela</a></div>
       <div class="toc-meta">Seminar Report, University of Arizona CAPLA, 2023</div>
       <div class="toc-tags"><span class="toc-tag">International planning</span><span class="toc-tag">Informal settlements</span><span class="toc-tag">Infrastructure</span><span class="toc-tag">Community governance</span></div>
     </div>
@@ -205,7 +283,7 @@
   <div class="toc-item">
     <span class="toc-num">05</span>
     <div class="toc-content">
-      <div class="toc-title">GIS &amp; Spatial Analysis</div>
+      <div class="toc-title"><a href="#project-05" style="color:inherit;text-decoration:none;">GIS &amp; Spatial Analysis</a></div>
       <div class="toc-meta">Graduate Research &amp; Consulting, University of Arizona / Integral Consulting, 2022–2024</div>
       <div class="toc-tags"><span class="toc-tag">ArcGIS Pro</span><span class="toc-tag">Land cover classification</span><span class="toc-tag">Social vulnerability</span><span class="toc-tag">Site suitability</span><span class="toc-tag">UAS remote sensing</span><span class="toc-tag">Food access</span><span class="toc-tag">Renewable energy</span><span class="toc-tag">Cartographic design</span></div>
     </div>
@@ -213,7 +291,7 @@
   <div class="toc-item">
     <span class="toc-num">06</span>
     <div class="toc-content">
-      <div class="toc-title">Chicago Environmental Action Plan</div>
+      <div class="toc-title"><a href="#project-06" style="color:inherit;text-decoration:none;">Chicago Environmental Action Plan</a></div>
       <div class="toc-meta">Graduate Studio, University of Arizona, 2023</div>
       <div class="toc-tags"><span class="toc-tag">Environmental planning</span><span class="toc-tag">Climate policy</span><span class="toc-tag">Equity-centred planning</span><span class="toc-tag">Green infrastructure</span><span class="toc-tag">Energy planning</span></div>
     </div>
@@ -221,7 +299,7 @@
   <div class="toc-item">
     <span class="toc-num">07</span>
     <div class="toc-content">
-      <div class="toc-title">Community Engagement &amp; Environmental Justice, UMD</div>
+      <div class="toc-title"><a href="#project-07" style="color:inherit;text-decoration:none;">Community Engagement &amp; Environmental Justice, UMD</a></div>
       <div class="toc-meta">Research Internship, University of Maryland CEEJH Lab, 2020–2021</div>
       <div class="toc-tags"><span class="toc-tag">Environmental justice</span><span class="toc-tag">Public communication</span><span class="toc-tag">Community outreach</span><span class="toc-tag">Disaster preparedness</span></div>
     </div>
@@ -234,11 +312,11 @@
   <h2 class="toc-header">Xahria Santiago</h2>
   <div class="about-grid">
     <div>
-      <p class="about-intro">Urban planner and GIS analyst whose path into planning started in public health, drawn by questions about how built environments shape health outcomes and who bears the greatest burden of environmental risk.</p>
+      <p class="about-intro">Urban planner and GIS analyst working at the intersection of healthy community planning, environmental justice, and climate resilience. My work focuses on a question that public health research made hard to ignore: who gets to live in a healthy place, and what does it take to change that?</p>
       <div class="about-block">
         <p class="section-label">Background</p>
-        <p>Experienced in community engagement, climate resilience research, environmental justice, and land use policy. Comfortable working across qualitative and quantitative methods and communicating findings to communities, government partners, and technical teams.</p>
-        <p>Holds an MS in Urban Planning and a Graduate Certificate in GIS from the University of Arizona, and a BS in Public Health Science from the University of Maryland. Currently based in Toronto, ON, seeking roles in environmental planning, community planning, and climate adaptation.</p>
+        <p>Trained in both public health and urban planning, with experience spanning community engagement, climate resilience research, environmental justice, and land use policy. Comfortable working across qualitative and quantitative methods and translating technical findings for communities, government partners, and technical teams.</p>
+        <p>Holds an MS in Urban Planning and a Graduate Certificate in GIS from the University of Arizona, and a BS in Public Health Science from the University of Maryland. Currently based in Toronto, ON, seeking roles in healthy community planning, environmental planning, and climate adaptation.</p>
       </div>
       <div class="about-block">
         <p class="section-label">Recognition</p>
@@ -252,7 +330,7 @@
     <div>
       <div class="about-block">
         <p class="section-label">Areas of focus</p>
-        <p>Environmental and climate planning, community engagement, GIS and spatial analysis, land use policy, healthy community planning, environmental justice.</p>
+        <p>Healthy community planning, environmental and climate planning, community engagement, GIS and spatial analysis, land use policy, environmental justice.</p>
       </div>
       <div class="about-block">
         <p class="section-label">Tools and methods</p>
@@ -267,16 +345,17 @@
 </div>
 
 <!-- PROJECT 01: EL PUEBLO -->
-<div class="project-page">
+<div id="project-01" class="project-page">
   <div class="project-header">
-    <div>
-      <p class="project-num">01 / 07</p>
-      <h2 class="project-title">El Pueblo Community<br>Resource Study</h2>
+    <div class="project-header-left">
+      <p class="project-num">Community Planning<span class="featured-badge">Featured</span></p>
+      <h2 class="project-title">El Pueblo Community Resource Study</h2>
       <p class="project-context">Capstone, City of Tucson Planning Department &amp; University of Arizona CAPLA, January–May 2023</p>
     </div>
-    <div class="project-meta">
-      <div><p class="meta-label">Client</p><p class="meta-value">City of Tucson Planning Department, with community partners at the El Pueblo Neighborhood Center</p></div>
-      <div><p class="meta-label">Role</p><p class="meta-value">Graduate capstone team member (5-person team); public health and quality of life lead; community engagement and three of seven vision sections</p></div>
+    <div class="project-header-right">
+      <div><p class="meta-label">Client</p><p class="meta-value">City of Tucson Planning Department</p></div>
+      <div><p class="meta-label">Role</p><p class="meta-value">Graduate capstone team member; public health and quality of life lead</p></div>
+      <div><p class="meta-label">Output</p><p class="meta-value">Community visioning document delivered to the City of Tucson</p></div>
       <div><p class="meta-label">Recognition</p><div class="award-badge">&#9733; Planning Excellence Gold Award</div></div>
     </div>
   </div>
@@ -306,8 +385,6 @@
         <div class="contribution-item"><span class="contribution-dot"></span><span>Authored three of the seven vision sections: Urban Gardens, Signage and Wayfinding, and Equitable Community Development Plan</span></div>
         <div class="contribution-item"><span class="contribution-dot"></span><span>Served as the team's public health and quality-of-life lead, integrating health equity framing across all seven sub-theme sections</span></div>
       </div>
-      <img src="images/el_pueblo_flyer.jpg" alt="El Pueblo Study bilingual community recruitment flyer" class="project-image">
-      <p class="project-image-caption">Bilingual (English/Spanish) study recruitment flyer distributed at the El Pueblo Center and surrounding community, 2023.</p>
       <div class="skills-block">
         <p class="section-label">Methods &amp; tools</p>
         <div class="skills-grid">
@@ -319,22 +396,22 @@
 </div>
 
 <!-- PROJECT 02: HEAT VULNERABILITY -->
-<div class="project-page">
+<div id="project-02" class="project-page">
   <div class="project-header">
-    <div>
-      <p class="project-num">02 / 07</p>
-      <h2 class="project-title">Extreme Heat Vulnerability<br>of Manufactured Housing</h2>
+    <div class="project-header-left">
+      <p class="project-num">GIS Research &amp; Publication<span class="featured-badge">Featured</span></p>
+      <h2 class="project-title">Extreme Heat Vulnerability of Manufactured Housing</h2>
       <p class="project-context">Graduate Research, University of Arizona / SW-IFL, January 2023–January 2024</p>
     </div>
-    <div class="project-meta">
-      <div><p class="meta-label">Funder</p><p class="meta-value">U.S. Department of Energy, Office of Biological and Environmental Research (Award DE-SC0023520)</p></div>
-      <div><p class="meta-label">Role</p><p class="meta-value">Second author and Graduate Research Assistant. Designed and executed the full GIS workflow; produced the core dataset; drafted first full manuscript excluding discussion and conclusion</p></div>
+    <div class="project-header-right">
+      <div><p class="meta-label">Funder</p><p class="meta-value">U.S. Department of Energy, Office of Biological and Environmental Research</p></div>
+      <div><p class="meta-label">Role</p><p class="meta-value">Second author; GIS workflow, core dataset, first manuscript draft</p></div>
       <div><p class="meta-label">Output</p><div class="published-badge">&#10003; Published: Urban Studies, 2025</div></div>
-      <div><p class="meta-label">Citation</p><p class="meta-value" style="font-size:12px;">Stoker, P., Santiago, X., &amp; Kear, M. (2025). Urban Studies. doi.org/10.1177/00420980251351241</p></div>
-      <div class="doc-links-row">
+      <div><p class="meta-label">Citation</p><p class="meta-value">Stoker, P., Santiago, X., &amp; Kear, M. (2025). doi.org/10.1177/00420980251351241</p></div>
+      <div style="grid-column: 1 / -1;"><div class="doc-links-row">
         <a href="https://doi.org/10.1177/00420980251351241" class="doc-link" target="_blank">View published paper</a>
         <a href="https://www.arcgis.com/home/item.html?id=5f9d96aab66f4f90a062abf916c25426" class="doc-link" target="_blank">View ArcGIS dashboard</a>
-      </div>
+      </div></div>
     </div>
   </div>
   <div class="project-body">
@@ -369,18 +446,18 @@
 </div>
 
 <!-- PROJECT 03: BARCELONA -->
-<div class="project-page">
+<div id="project-03" class="project-page">
   <div class="project-header">
-    <div>
-      <p class="project-num">03 / 07</p>
-      <h2 class="project-title">Barcelona Superblocks:<br>Graduate City Report</h2>
+    <div class="project-header-left">
+      <p class="project-num">Urban Design &amp; Active Transportation</p>
+      <h2 class="project-title">Barcelona Superblocks: Graduate City Report</h2>
       <p class="project-context">Academic Report, University of Arizona CAPLA, Transportation &amp; Land Use Planning, 2023</p>
     </div>
-    <div class="project-meta">
+    <div class="project-header-right">
       <div><p class="meta-label">Course</p><p class="meta-value">PLG568: Transportation and Land Use Planning</p></div>
       <div><p class="meta-label">Role</p><p class="meta-value">Sole author</p></div>
-      <div><p class="meta-label">Focus</p><p class="meta-value">Pedestrianization, traffic calming, public space activation, measurable health and environmental outcomes</p></div>
-      <div><a href="docs/03_barcelona.pdf" class="doc-link" target="_blank">View full report</a></div>
+      <div><p class="meta-label">Focus</p><p class="meta-value">Pedestrianization, traffic calming, public space activation, health outcomes</p></div>
+      <div><a href="docs/03_barcelona.pdf" class="doc-link" target="_blank">View full presentation</a></div>
     </div>
   </div>
   <div class="project-body">
@@ -413,17 +490,17 @@
 </div>
 
 <!-- PROJECT 04: ROCINHA -->
-<div class="project-page">
+<div id="project-04" class="project-page">
   <div class="project-header">
-    <div>
-      <p class="project-num">04 / 07</p>
-      <h2 class="project-title">Rocinha: Critical Issues<br>in Favela Urbanism</h2>
+    <div class="project-header-left">
+      <p class="project-num">International Planning</p>
+      <h2 class="project-title">Rocinha: Critical Issues in Favela Urbanism</h2>
       <p class="project-context">Seminar Report, University of Arizona CAPLA, International Planning, 2023</p>
     </div>
-    <div class="project-meta">
+    <div class="project-header-right">
       <div><p class="meta-label">Course</p><p class="meta-value">PLG696D: International Planning, Dr. Seth Okyere</p></div>
       <div><p class="meta-label">Role</p><p class="meta-value">Sole author</p></div>
-      <div><p class="meta-label">Location</p><p class="meta-value">Rocinha, Rio de Janeiro, Brazil. Brazil's largest favela, population 150,000–200,000</p></div>
+      <div><p class="meta-label">Location</p><p class="meta-value">Rocinha, Rio de Janeiro, Brazil — population 150,000–200,000</p></div>
       <div><a href="docs/04_rocinha.pdf" class="doc-link" target="_blank">View full report</a></div>
     </div>
   </div>
@@ -459,21 +536,21 @@
 </div>
 
 <!-- PROJECT 05: GIS TABBED -->
-<div class="gis-page">
+<div id="project-05" class="gis-page">
   <div class="project-header">
-    <div>
-      <p class="project-num">05 / 07</p>
+    <div class="project-header-left">
+      <p class="project-num">GIS &amp; Spatial Analysis</p>
       <h2 class="project-title">GIS &amp; Spatial Analysis</h2>
       <p class="project-context">Graduate Research &amp; Consulting, University of Arizona / Integral Consulting, 2022–2024</p>
     </div>
-    <div class="project-meta">
-      <div><p class="meta-label">Tools</p><p class="meta-value">ArcGIS Pro, ArcGIS Online, ArcMap, Pix4D, DJI Mavic 2 Pro, NAIP multispectral imagery, Excel, Tableau</p></div>
-      <div><p class="meta-label">Tabs</p><p class="meta-value">Heat Vulnerability Analysis &nbsp;·&nbsp; Social Vulnerability Assessment &nbsp;·&nbsp; Solar Farm Suitability &nbsp;·&nbsp; Grocery Store Suitability &nbsp;·&nbsp; UAS Land Surface Temperature &nbsp;·&nbsp; Cartographic Design</p></div>
+    <div class="project-header-right">
+      <div><p class="meta-label">Tools</p><p class="meta-value">ArcGIS Pro, ArcGIS Online, ArcMap, Pix4D, DJI Mavic 2 Pro, Excel, Tableau</p></div>
+      <div><p class="meta-label">Tabs</p><p class="meta-value">Water Demand & Climate · Social Vulnerability · Solar Suitability · Grocery Suitability · UAS Thermal · Cartographic Design</p></div>
     </div>
   </div>
 
   <div class="tab-bar">
-    <button class="tab-btn active" onclick="showTab('heat')">Heat Vulnerability Analysis</button>
+    <button class="tab-btn active" onclick="showTab('water')">Water Demand &amp; Climate Change</button>
     <button class="tab-btn" onclick="showTab('sva')">Social Vulnerability Assessment</button>
     <button class="tab-btn" onclick="showTab('solar')">Solar Farm Suitability</button>
     <button class="tab-btn" onclick="showTab('grocery')">Grocery Store Suitability</button>
@@ -481,35 +558,35 @@
     <button class="tab-btn" onclick="showTab('carto')">Cartographic Design</button>
   </div>
 
-  <!-- TAB 1: HEAT -->
-  <div id="tab-heat" class="tab-panel active">
+  <!-- TAB 1: WATER DEMAND -->
+  <div id="tab-water" class="tab-panel active">
     <div class="tab-meta-row">
-      <div><p class="meta-label">Project</p><p class="meta-value">Extreme Heat Vulnerability: ArcGIS Online Dashboard &amp; Public Dataset</p></div>
-      <div><p class="meta-label">Partner</p><p class="meta-value">SW-IFL / University of Arizona</p></div>
-      <div><p class="meta-label">Period</p><p class="meta-value">2023–2024</p></div>
-      <div><p class="meta-label">Audience</p><p class="meta-value">50+ stakeholders across policy, public health, and planning</p></div>
+      <div><p class="meta-label">Project</p><p class="meta-value">Water Demand under Climate Change in the Salt River Project Service Area, Arizona</p></div>
+      <div><p class="meta-label">Partner</p><p class="meta-value">Salt River Project / University of Arizona</p></div>
+      <div><p class="meta-label">Output</p><p class="meta-value">Conference paper presented at CCWI/WDSA 2024, Ferrara, Italy</p></div>
+      <div><p class="meta-label">Period</p><p class="meta-value">2022–2024</p></div>
     </div>
     <div>
       <p class="section-label">Overview</p>
-      <p class="project-overview">An interactive ArcGIS Online dashboard was built to make the parcel-level heat vulnerability findings from the SW-IFL research accessible to a broad, non-technical audience. The dashboard presents findings across 1.7 million parcels in Tucson, Phoenix, and Flagstaff, letting users explore housing type comparisons, geographic patterns, and tenure-based differences without needing GIS expertise.</p>
-      <p class="project-overview">The full research dataset was compiled and released publicly through the SW-IFL repository, including metadata and a data dictionary, to support open access and reproducibility.</p>
+      <p class="project-overview">The Salt River Project provides water to 13 cities in the Phoenix metro area. As temperatures rise and precipitation patterns shift, understanding how outdoor water demand will change under different climate scenarios is a critical planning question for the region. This project developed a quantitative framework to estimate those demand changes — accounting for pool evaporation, vegetation irrigation requirements, and historically observed irrigation inefficiencies across all 13 municipalities.</p>
+      <p class="project-overview">The GIS work centred on classifying land cover from NAIP multispectral imagery for 2010, 2015, and 2021, and using zonal statistics to calculate total vegetated and pool surface area by municipality. Those area estimates feed directly into the Penman-Monteith evapotranspiration equation used to project future outdoor demand under climate scenarios. The work was presented as a conference paper at the 2024 Computing and Control for the Water Industry / Water Distribution Systems Analysis joint conference in Ferrara, Italy.</p>
       <div class="callout callout-produced">
         <p class="section-label">What this produced</p>
-        <p>A publicly accessible ArcGIS Online dashboard and a <strong>publicly released research dataset</strong> on the SW-IFL / University of Arizona repository, with open access to the full GIS data underlying the published Urban Studies paper.</p>
+        <p>Land cover classifications for 13 Phoenix metro municipalities across three time periods (2010, 2015, 2021), with pool and vegetation surface area estimates by municipality. Results used to calculate outdoor irrigation inefficiency metrics and <strong>project water demand changes under future climate scenarios</strong> for SRP's long-range planning.</p>
       </div>
-      <a href="https://www.arcgis.com/home/item.html?id=5f9d96aab66f4f90a062abf916c25426" class="doc-link" target="_blank">View ArcGIS Online dashboard</a>
     </div>
     <div>
       <div class="contribution-block">
-        <p class="section-label">Methods</p>
-        <div class="contribution-item"><span class="contribution-dot"></span><span>Designed dashboard layout and user experience for a non-GIS audience, prioritizing clarity of key findings over technical display</span></div>
-        <div class="contribution-item"><span class="contribution-dot"></span><span>Configured interactive layers showing vegetation cover, housing type, and tenure arrangement across 1.7 million parcels</span></div>
-        <div class="contribution-item"><span class="contribution-dot"></span><span>Independently compiled, structured, and documented the finalized research dataset for public release, including metadata and data dictionary</span></div>
+        <p class="section-label">Contributions</p>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Classified NAIP multispectral imagery (1m resolution, 4-band RGB-N) for 13 Phoenix metro cities across three time periods using a supervised maximum likelihood classifier with four land cover classes: vegetation, water surfaces, impervious, and bare ground</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Manually delineated training sites for each class; assessed classification accuracy using stratified random sampling and ground-truthing against orthophoto images</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Applied zonal statistics to calculate total pool and vegetation surface area per municipality for each time period — the key inputs for estimating evapotranspiration-based outdoor demand</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Collaborated with the project team on methodology design and contributed to data curation and formal analysis; co-author on the conference paper</span></div>
       </div>
       <div class="skills-block">
         <p class="section-label">Methods &amp; tools</p>
         <div class="skills-grid">
-          <span class="skill-tag">ArcGIS Online</span><span class="skill-tag">Dashboard design</span><span class="skill-tag">Data communication</span><span class="skill-tag">Open data publication</span><span class="skill-tag">Metadata documentation</span>
+          <span class="skill-tag">NAIP multispectral imagery</span><span class="skill-tag">Supervised land cover classification</span><span class="skill-tag">Maximum likelihood classifier</span><span class="skill-tag">Accuracy assessment</span><span class="skill-tag">Zonal statistics</span><span class="skill-tag">ArcGIS Pro</span><span class="skill-tag">Water demand forecasting</span><span class="skill-tag">Climate scenario analysis</span><span class="skill-tag">Evapotranspiration modelling</span>
         </div>
       </div>
     </div>
@@ -521,7 +598,7 @@
       <div><p class="meta-label">Project</p><p class="meta-value">Social Vulnerability Assessment: Marina, CA</p></div>
       <div><p class="meta-label">Employer</p><p class="meta-value">Integral Consulting Inc., Santa Rosa, CA</p></div>
       <div><p class="meta-label">Period</p><p class="meta-value">Summer 2022</p></div>
-      <div><p class="meta-label">Note</p><p class="meta-value">Final report is a client deliverable. Working methodology and process documentation shown here.</p></div>
+      <div><p class="meta-label">Note</p><p class="meta-value">Final report is a client deliverable. The variable selection framework, scoring methodology, and block-group findings shown here.</p></div>
     </div>
     <div>
       <p class="section-label">Overview</p>
@@ -646,7 +723,7 @@
       <p class="project-image-caption">RGB orthomosaic of the 15.6-acre study area generated from 160 drone images. The property includes vegetation, impervious surfaces, bare ground, and three water bodies.</p>
       <img src="images/uas_land_cover.jpg" alt="Supervised land cover classification of the study area: 85% overall accuracy" class="project-image">
       <p class="project-image-caption">Supervised land cover classification (85% overall accuracy). Bare ground ran hottest at 19.2°C average; water was coolest at 12.5°C. East-facing slopes recorded the highest mean temperature at 22.2°C.</p>
-      <a href="docs/05c_uas_thermal.pdf" class="doc-link" target="_blank">View full analysis</a>
+      <a href="docs/05c_uas_thermal.pdf" class="doc-link" target="_blank">View full presentation</a>
     </div>
     <div>
       <div class="contribution-block">
@@ -684,7 +761,6 @@
         <p class="section-label">The design challenge</p>
         <p>Good cartographic design means the reader understands the data without being told how to read it. For the accessibility matrix, that meant applying <strong>consistent visual language across all maps</strong>: colour palette, typography, scale, and layout, so a viewer moving between panels immediately sees the spatial relationships. For the Red Line diagram, it meant deciding what to leave out.</p>
       </div>
-      <img src="images/chicago_carto_cover.jpg" alt="Downtown Chicago Accessibility Matrix report cover" class="project-image">
       <img src="images/chicago_accessibility_matrix.jpg" alt="Downtown Chicago accessibility matrix composite map" class="project-image">
       <p class="project-image-caption">Composite accessibility matrix showing walkability index, grocery store status, and zero-car households across downtown Chicago census block groups.</p>
       <img src="images/chicago_red_line.jpg" alt="CTA Red Line schematic diagram" class="project-image">
@@ -715,17 +791,18 @@
 </div>
 
 <!-- PROJECT 06: CHICAGO ENVIRONMENTAL ACTION PLAN -->
-<div class="project-page">
+<div id="project-06" class="project-page">
   <div class="project-header">
-    <div>
-      <p class="project-num">06 / 07</p>
-      <h2 class="project-title">Chicago Environmental<br>Action Plan</h2>
+    <div class="project-header-left">
+      <p class="project-num">Environmental Planning</p>
+      <h2 class="project-title">Chicago Environmental Action Plan</h2>
       <p class="project-context">Graduate Studio, University of Arizona, 2023</p>
     </div>
-    <div class="project-meta">
+    <div class="project-header-right">
       <div><p class="meta-label">Course</p><p class="meta-value">University of Arizona Master of Urban Planning</p></div>
-      <div><p class="meta-label">Scale</p><p class="meta-value">City of Chicago: energy, air & climate, water, biodiversity, agriculture, waste management</p></div>
-      <div><p class="meta-label">Output</p><p class="meta-value">25-page environmental action plan with city profile, equity-centred goals, sector strategies, and policy actions</p></div>
+      <div><p class="meta-label">Scale</p><p class="meta-value">City of Chicago: energy, air & climate, water, biodiversity, agriculture, waste</p></div>
+      <div><p class="meta-label">Output</p><p class="meta-value">25-page environmental action plan with city profile, equity goals, and sector strategies</p></div>
+      <div><a href="docs/06_chicago_env_action_plan.pdf" class="doc-link" target="_blank">View full plan</a></div>
     </div>
   </div>
   <div class="project-body">
@@ -738,8 +815,7 @@
         <p>The plan's 20-year vision centres environmental justice across all six sectors, from clean energy tax districts in underserved neighbourhoods to urban agriculture incentive zones in food desert areas. Toronto's Eco-Roof Incentive Program is referenced as a model for green roof policy, a sign that <strong>Canadian cities are already doing some of this work</strong>.</p>
       </div>
       <img src="images/chicago_eap_profile.jpg" alt="Chicago city profile page from the 2023 Environmental Action Plan" class="project-image">
-      <p class="project-image-caption">Chicago city profile: demographics, housing tenure, and transportation to work. The plan opens with a full baseline profile before moving into sector-specific goals and strategies.</p>
-      <a href="docs/06_chicago_env_action_plan.pdf" class="doc-link" target="_blank">View full plan</a>
+      <p class="project-image-caption">Chicago city profile: demographics, housing tenure, and transportation to work.</p>
     </div>
     <div>
       <div class="contribution-block">
@@ -763,17 +839,17 @@
 </div>
 
 <!-- PROJECT 07: UMD -->
-<div class="project-page">
+<div id="project-07" class="project-page">
   <div class="project-header">
-    <div>
-      <p class="project-num">07 / 07</p>
-      <h2 class="project-title">Community Engagement &amp;<br>Environmental Justice</h2>
+    <div class="project-header-left">
+      <p class="project-num">Community Engagement &amp; Environmental Justice</p>
+      <h2 class="project-title">Community Engagement &amp; Environmental Justice</h2>
       <p class="project-context">Research Internship, University of Maryland CEEJH Lab, August 2020–May 2021</p>
     </div>
-    <div class="project-meta">
+    <div class="project-header-right">
       <div><p class="meta-label">Institution</p><p class="meta-value">University of Maryland CEEJH Lab, in partnership with Duke University</p></div>
-      <div><p class="meta-label">Role</p><p class="meta-value">Research Intern, community engagement materials, public communication design, outreach for air quality monitoring and disaster preparedness campaigns</p></div>
-      <div><p class="meta-label">Output</p><p class="meta-value">Two published papers; disaster preparedness toolkits; community engagement infographics and flyers</p></div>
+      <div><p class="meta-label">Role</p><p class="meta-value">Research Intern; community engagement materials and public communication design</p></div>
+      <div><p class="meta-label">Output</p><p class="meta-value">Disaster preparedness toolkits; EJ infographics and community engagement flyers</p></div>
     </div>
   </div>
   <div class="project-body">
@@ -783,7 +859,7 @@
       <p class="project-overview">Two samples from this work are shown: an environmental justice infographic on the 2014 Dan River Coal Ash Spill (covering health risks, demographic vulnerability, and an estimated $220.5 million in economic losses) and a community focus group recruitment flyer for the North Charleston, SC disaster resilience study.</p>
       <div class="callout callout-impact">
         <p class="section-label" style="color: var(--warm);">Impact</p>
-        <p>Contributed to two published papers on environmental justice and health disparities. Disaster preparedness toolkits were used by communities in North and South Carolina facing documented contaminant release risk. <strong>All public-facing materials were designed to communicate complex environmental health data clearly</strong> to residents without technical backgrounds.</p>
+        <p>Disaster preparedness toolkits were used by communities in North and South Carolina facing documented contaminant release risk. <strong>All public-facing materials were designed to communicate complex environmental health data clearly</strong> to residents without technical backgrounds.</p>
       </div>
     </div>
     <div>
@@ -794,7 +870,6 @@
         <div class="contribution-item"><span class="contribution-dot"></span><span>Supported air quality monitoring outreach in Baltimore, coordinating community participation and translating monitoring findings for a general audience</span></div>
         <div class="contribution-item"><span class="contribution-dot"></span><span>Helped produce disaster preparedness toolkits for communities in North and South Carolina</span></div>
         <div class="contribution-item"><span class="contribution-dot"></span><span>Developed digital outreach content for the Maryland Department of Health's Environmental Public Health Tracking tools</span></div>
-        <div class="contribution-item"><span class="contribution-dot"></span><span>Contributed to two published papers on environmental justice and health disparities</span></div>
       </div>
       <div class="skills-block">
         <p class="section-label">Methods &amp; tools</p>
@@ -817,6 +892,15 @@ function showTab(id) {
   document.getElementById('tab-' + id).classList.add('active');
   event.target.classList.add('active');
 }
+function toggleNav() {
+  document.getElementById('navMenu').classList.toggle('open');
+}
+function closeNav() {
+  document.getElementById('navMenu').classList.remove('open');
+}
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.nav-dropdown')) closeNav();
+});
 </script>
 </body>
 </html>
