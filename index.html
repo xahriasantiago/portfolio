@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planning Portfolio: Xahria Santiago</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap');
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --ink: #1a1a18; --ink-mid: #4a4a46; --ink-light: #8a8a84;
+    --rule: #d8d6ce; --accent: #2a5f4a; --accent-light: #e8f2ed;
+    --warm: #8c6a3a; --warm-light: #f5efe6;
+    --blue: #2a4a7f; --blue-light: #e8edf5;
+    --purple: #6a4a8c; --purple-light: #f5f0fa;
+    --page: #fafaf8; --white: #ffffff; --tag-bg: #eeecea;
+  }
+  html { font-size: 16px; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--page); color: var(--ink); line-height: 1.65; font-weight: 400; -webkit-font-smoothing: antialiased; }
+
+  /* COVER */
+  .cover { min-height: 100vh; display: flex; flex-direction: column; justify-content: space-between; padding: 4rem; background: var(--white); page-break-after: always; }
+  .cover-top { display: flex; justify-content: space-between; }
+  .cover-label { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-light); font-weight: 500; }
+  .cover-main { padding: 4rem 0; }
+  .cover-eyebrow { font-size: 13px; color: var(--accent); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 1.5rem; }
+  .cover-name { font-family: 'DM Serif Display', serif; font-size: 5.5rem; line-height: 1.0; color: var(--ink); margin-bottom: 1.5rem; }
+  .cover-subtitle { font-size: 1.25rem; color: var(--ink-mid); font-weight: 300; max-width: 480px; line-height: 1.6; }
+  .cover-rule { width: 60px; height: 2px; background: var(--accent); margin: 2rem 0; }
+  .cover-bottom { display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid var(--rule); padding-top: 2rem; }
+  .cover-contact { font-size: 13px; color: var(--ink-mid); line-height: 1.8; }
+  .cover-contact a { color: var(--accent); text-decoration: none; }
+  .cover-index { text-align: right; font-size: 12px; color: var(--ink-light); line-height: 2; }
+
+  /* TOC */
+  .toc-page { min-height: 100vh; padding: 4rem; background: var(--white); page-break-after: always; }
+  .toc-header { font-family: 'DM Serif Display', serif; font-size: 2.5rem; margin-bottom: 3rem; }
+  .toc-item { display: flex; align-items: baseline; gap: 1rem; padding: 1.25rem 0; border-bottom: 1px solid var(--rule); }
+  .toc-num { font-size: 11px; color: var(--ink-light); font-weight: 500; letter-spacing: 0.1em; min-width: 28px; }
+  .toc-content { flex: 1; }
+  .toc-title { font-size: 1.1rem; font-weight: 500; margin-bottom: 0.2rem; }
+  .toc-meta { font-size: 13px; color: var(--ink-light); }
+  .toc-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.5rem; }
+  .toc-tag { font-size: 11px; background: var(--tag-bg); color: var(--ink-mid); padding: 2px 8px; border-radius: 3px; }
+
+  /* PROJECT PAGES */
+  .project-page { min-height: 100vh; padding: 4rem; background: var(--white); page-break-after: always; }
+  .project-page:last-child { page-break-after: auto; }
+  .project-header { display: grid; grid-template-columns: 1fr 240px; gap: 3rem; margin-bottom: 3rem; padding-bottom: 2.5rem; border-bottom: 1px solid var(--rule); }
+  .project-num { font-size: 11px; color: var(--ink-light); font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.75rem; }
+  .project-title { font-family: 'DM Serif Display', serif; font-size: 2.4rem; line-height: 1.15; margin-bottom: 0.75rem; }
+  .project-context { font-size: 14px; color: var(--ink-mid); }
+  .project-meta { display: flex; flex-direction: column; gap: 1rem; }
+  .meta-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-light); font-weight: 500; margin-bottom: 0.2rem; }
+  .meta-value { font-size: 13px; color: var(--ink-mid); line-height: 1.5; }
+  .award-badge { display: inline-flex; align-items: center; gap: 5px; background: var(--warm-light); color: var(--warm); font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 4px; margin-top: 0.25rem; }
+  .published-badge { display: inline-flex; align-items: center; gap: 5px; background: var(--accent-light); color: var(--accent); font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 4px; margin-top: 0.25rem; }
+  .project-body { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .section-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-light); font-weight: 500; margin-bottom: 0.75rem; }
+  .project-overview { font-size: 1rem; line-height: 1.75; margin-bottom: 1.5rem; }
+  .contribution-block { margin-bottom: 1.75rem; }
+  .contribution-item { display: flex; gap: 0.75rem; margin-bottom: 0.75rem; font-size: 14px; color: var(--ink-mid); line-height: 1.6; }
+  .contribution-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 8px; }
+  .skills-block { margin-bottom: 1.75rem; }
+  .skills-grid { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
+  .skill-tag { font-size: 12px; background: var(--tag-bg); color: var(--ink-mid); padding: 4px 10px; border-radius: 4px; border: 1px solid var(--rule); }
+
+  /* CALLOUTS */
+  .callout { padding: 1.25rem 1.5rem; border-radius: 0 6px 6px 0; margin-bottom: 1.75rem; }
+  .callout p { font-size: 14px; line-height: 1.7; }
+  .callout strong { font-weight: 500; }
+  .callout-impact { background: var(--warm-light); border-left: 3px solid var(--warm); }
+  .callout-impact p, .callout-impact strong { color: var(--ink-mid); }
+  .callout-impact strong { color: var(--warm); }
+  .callout-finding { background: var(--accent-light); border-left: 3px solid var(--accent); }
+  .callout-finding p { color: var(--ink-mid); }
+  .callout-finding strong { color: var(--accent); }
+  .callout-context { background: var(--blue-light); border-left: 3px solid var(--blue); }
+  .callout-context p { color: var(--ink-mid); }
+  .callout-context strong { color: var(--blue); }
+  .callout-hard { background: var(--purple-light); border-left: 3px solid var(--purple); }
+  .callout-hard p { color: var(--ink-mid); }
+  .callout-hard strong { color: var(--purple); }
+  .callout-produced { background: var(--tag-bg); border-left: 3px solid var(--ink-light); }
+  .callout-produced p { color: var(--ink-mid); }
+  .callout-produced strong { color: var(--ink); }
+
+  /* PDF LINK BUTTON */
+  .doc-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 1rem; padding: 8px 16px; border: 1.5px solid var(--accent); border-radius: 4px; font-size: 13px; font-weight: 500; color: var(--accent); text-decoration: none; transition: background 0.15s; }
+  .doc-link:hover { background: var(--accent-light); }
+  .doc-link::before { content: "↗"; font-size: 12px; }
+  .doc-links-row { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem; }
+  .project-image { width: 100%; border-radius: 4px; margin-top: 1.5rem; display: block; border: 1px solid var(--rule); }
+  .project-image-caption { font-size: 12px; color: var(--ink-light); margin-top: 0.4rem; font-style: italic; }
+
+  /* GIS PAGE: TABBED */
+  .gis-page { min-height: 100vh; padding: 4rem; background: var(--white); page-break-after: always; }
+  .tab-bar { display: flex; border-bottom: 2px solid var(--rule); margin-bottom: 2.5rem; }
+  .tab-btn { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; color: var(--ink-light); background: none; border: none; border-bottom: 2px solid transparent; padding: 0.75rem 1.25rem; margin-bottom: -2px; cursor: pointer; transition: color 0.15s, border-color 0.15s; }
+  .tab-btn:hover { color: var(--ink); }
+  .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .tab-meta-row { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule); grid-column: 1 / -1; }
+
+  /* STICKY NAV */
+  .sticky-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,250,248,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid var(--rule); display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 2rem; font-size: 12px; }
+  .sticky-nav-name { font-weight: 500; color: var(--ink); }
+  .sticky-nav-links { display: flex; gap: 1.5rem; }
+  .sticky-nav-links a { color: var(--ink-mid); text-decoration: none; transition: color 0.15s; }
+  .sticky-nav-links a:hover { color: var(--accent); }
+  body { padding-top: 40px; }
+
+  /* ABOUT PAGE */
+  .about-page { min-height: 100vh; padding: 4rem; background: var(--white); page-break-after: always; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 3rem; }
+  .about-intro { font-size: 1.15rem; line-height: 1.8; color: var(--ink); margin-bottom: 2rem; }
+  .about-block { margin-bottom: 2.5rem; }
+  .about-block p { font-size: 14px; color: var(--ink-mid); line-height: 1.75; margin-bottom: 0.75rem; }
+  .about-fun { background: var(--accent-light); border-left: 3px solid var(--accent); padding: 1.25rem 1.5rem; border-radius: 0 6px 6px 0; margin-top: 2rem; }
+  .about-fun p { font-size: 14px; color: var(--ink-mid); line-height: 1.7; }
+
+  /* FIX CARTOGRAPHY TAB WIDTH */
+  .tab-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 100%; overflow-x: hidden; }
+  .tab-panel.active > div { min-width: 0; }
+    .tab-btn { display: none; }
+    .tab-panel { display: grid !important; grid-template-columns: 1fr 1fr; gap: 3rem; page-break-before: always; }
+    .tab-panel:first-of-type { page-break-before: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- STICKY NAV -->
+<nav class="sticky-nav">
+  <span class="sticky-nav-name">Xahria Santiago</span>
+  <div class="sticky-nav-links">
+    <a href="mailto:xahria.santiago@gmail.com">xahria.santiago@gmail.com</a>
+    <a href="https://linkedin.com/in/xahria-santiago" target="_blank">LinkedIn</a>
+  </div>
+</nav>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-top">
+    <span class="cover-label">Planning Portfolio</span>
+    <span class="cover-label">2026</span>
+  </div>
+  <div class="cover-main">
+    <p class="cover-eyebrow">Urban Planning &amp; GIS Analysis</p>
+    <h1 class="cover-name">Xahria<br>Santiago</h1>
+    <div class="cover-rule"></div>
+    <p class="cover-subtitle">Urban planning, community engagement, GIS analysis, and policy research across community, regional, and international scales.</p>
+  </div>
+  <div class="cover-bottom">
+    <div class="cover-contact">
+      <div>xahria.santiago@gmail.com</div>
+      <div>(301) 312-0605</div>
+      <div><a href="https://linkedin.com/in/xahria-santiago">linkedin.com/in/xahria-santiago</a></div>
+      <div>Toronto, ON</div>
+    </div>
+    <div class="cover-index">
+      <div>MS Urban Planning, University of Arizona</div>
+      <div>Graduate Certificate in GIS, University of Arizona</div>
+      <div>BS Public Health Science, University of Maryland</div>
+    </div>
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="toc-page">
+  <h2 class="toc-header">Projects</h2>
+  <div class="toc-item">
+    <span class="toc-num">01</span>
+    <div class="toc-content">
+      <div class="toc-title">El Pueblo Community Resource Study</div>
+      <div class="toc-meta">Capstone, City of Tucson Planning Department &amp; University of Arizona, 2023</div>
+      <div class="toc-tags"><span class="toc-tag">Community engagement</span><span class="toc-tag">Environmental justice</span><span class="toc-tag">Public health</span><span class="toc-tag">Stakeholder facilitation</span></div>
+    </div>
+  </div>
+  <div class="toc-item">
+    <span class="toc-num">02</span>
+    <div class="toc-content">
+      <div class="toc-title">Extreme Heat Vulnerability of Manufactured Housing</div>
+      <div class="toc-meta">Graduate Research, University of Arizona / SW-IFL, 2023–2024. Published in Urban Studies, 2025.</div>
+      <div class="toc-tags"><span class="toc-tag">GIS</span><span class="toc-tag">Remote sensing</span><span class="toc-tag">Land cover classification</span><span class="toc-tag">Climate adaptation</span><span class="toc-tag">Peer-reviewed research</span></div>
+    </div>
+  </div>
+  <div class="toc-item">
+    <span class="toc-num">03</span>
+    <div class="toc-content">
+      <div class="toc-title">Barcelona Superblocks: Graduate City Report</div>
+      <div class="toc-meta">Academic, University of Arizona CAPLA, 2023</div>
+      <div class="toc-tags"><span class="toc-tag">Active transportation</span><span class="toc-tag">Urban design</span><span class="toc-tag">Public health</span><span class="toc-tag">Traffic calming</span></div>
+    </div>
+  </div>
+  <div class="toc-item">
+    <span class="toc-num">04</span>
+    <div class="toc-content">
+      <div class="toc-title">Rocinha: Urbanism of Brazil's Largest Favela</div>
+      <div class="toc-meta">Seminar Report, University of Arizona CAPLA, 2023</div>
+      <div class="toc-tags"><span class="toc-tag">International planning</span><span class="toc-tag">Informal settlements</span><span class="toc-tag">Infrastructure</span><span class="toc-tag">Community governance</span></div>
+    </div>
+  </div>
+  <div class="toc-item">
+    <span class="toc-num">05</span>
+    <div class="toc-content">
+      <div class="toc-title">GIS &amp; Spatial Analysis</div>
+      <div class="toc-meta">Graduate Research &amp; Consulting, University of Arizona / Integral Consulting, 2022–2024</div>
+      <div class="toc-tags"><span class="toc-tag">ArcGIS Pro</span><span class="toc-tag">Land cover classification</span><span class="toc-tag">Social vulnerability</span><span class="toc-tag">Site suitability</span><span class="toc-tag">UAS remote sensing</span><span class="toc-tag">Food access</span><span class="toc-tag">Renewable energy</span><span class="toc-tag">Cartographic design</span></div>
+    </div>
+  </div>
+  <div class="toc-item">
+    <span class="toc-num">06</span>
+    <div class="toc-content">
+      <div class="toc-title">Chicago Environmental Action Plan</div>
+      <div class="toc-meta">Graduate Studio, University of Arizona, 2023</div>
+      <div class="toc-tags"><span class="toc-tag">Environmental planning</span><span class="toc-tag">Climate policy</span><span class="toc-tag">Equity-centred planning</span><span class="toc-tag">Green infrastructure</span><span class="toc-tag">Energy planning</span></div>
+    </div>
+  </div>
+  <div class="toc-item">
+    <span class="toc-num">07</span>
+    <div class="toc-content">
+      <div class="toc-title">Community Engagement &amp; Environmental Justice, UMD</div>
+      <div class="toc-meta">Research Internship, University of Maryland CEEJH Lab, 2020–2021</div>
+      <div class="toc-tags"><span class="toc-tag">Environmental justice</span><span class="toc-tag">Public communication</span><span class="toc-tag">Community outreach</span><span class="toc-tag">Disaster preparedness</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="about-page">
+  <p class="cover-eyebrow">About</p>
+  <h2 class="toc-header">Xahria Santiago</h2>
+  <div class="about-grid">
+    <div>
+      <p class="about-intro">Urban planner and GIS analyst whose path into planning started in public health, drawn by questions about how built environments shape health outcomes and who bears the greatest burden of environmental risk.</p>
+      <div class="about-block">
+        <p class="section-label">Background</p>
+        <p>Experienced in community engagement, climate resilience research, environmental justice, and land use policy. Comfortable working across qualitative and quantitative methods and communicating findings to communities, government partners, and technical teams.</p>
+        <p>Holds an MS in Urban Planning and a Graduate Certificate in GIS from the University of Arizona, and a BS in Public Health Science from the University of Maryland. Currently based in Toronto, ON, seeking roles in environmental planning, community planning, and climate adaptation.</p>
+      </div>
+      <div class="about-block">
+        <p class="section-label">Recognition</p>
+        <p>2023 Planning Excellence Gold Award, University of Arizona CAPLA. Published in Urban Studies (2025) as second author on peer-reviewed research on extreme heat vulnerability and manufactured housing.</p>
+      </div>
+      <div class="about-fun">
+        <p class="section-label" style="color: var(--accent);">Beyond planning</p>
+        <p>Former NCAA Division I track and field athlete who competed in the Big Ten (University of Maryland) and Pac-12 (University of Arizona). Represented Canada as a member of Team Canada, winning medals at the Pan American Junior Games and World U20 Championships, and holds the Canadian U18 record in the 400m hurdles. Sport taught the same things good planning requires: working under pressure, operating as part of a team, and knowing how to compete.</p>
+      </div>
+    </div>
+    <div>
+      <div class="about-block">
+        <p class="section-label">Areas of focus</p>
+        <p>Environmental and climate planning, community engagement, GIS and spatial analysis, land use policy, healthy community planning, environmental justice.</p>
+      </div>
+      <div class="about-block">
+        <p class="section-label">Tools and methods</p>
+        <p>ArcGIS Pro, ArcGIS Online, ArcMap, Pix4D, DJI Mavic 2 Pro, Adobe InDesign, Excel, Tableau. Quantitative spatial analysis, supervised image classification, social vulnerability indexing, site suitability modelling, community survey design, stakeholder engagement.</p>
+      </div>
+      <div class="about-block">
+        <p class="section-label">Contact</p>
+        <p>xahria.santiago@gmail.com<br>(301) 312-0605<br><a href="https://linkedin.com/in/xahria-santiago" style="color: var(--accent);">linkedin.com/in/xahria-santiago</a><br>Toronto, ON</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECT 01: EL PUEBLO -->
+<div class="project-page">
+  <div class="project-header">
+    <div>
+      <p class="project-num">01 / 07</p>
+      <h2 class="project-title">El Pueblo Community<br>Resource Study</h2>
+      <p class="project-context">Capstone, City of Tucson Planning Department &amp; University of Arizona CAPLA, January–May 2023</p>
+    </div>
+    <div class="project-meta">
+      <div><p class="meta-label">Client</p><p class="meta-value">City of Tucson Planning Department, with community partners at the El Pueblo Neighborhood Center</p></div>
+      <div><p class="meta-label">Role</p><p class="meta-value">Graduate capstone team member (5-person team); public health and quality of life lead; community engagement and three of seven vision sections</p></div>
+      <div><p class="meta-label">Recognition</p><div class="award-badge">&#9733; Planning Excellence Gold Award</div></div>
+      <div><a href="docs/01_el_pueblo.pdf" class="doc-link" target="_blank">View full report</a></div>
+    </div>
+  </div>
+  <div class="project-body">
+    <div>
+      <p class="section-label">Overview</p>
+      <p class="project-overview">The El Pueblo Community Resource Study is a community visioning document produced for the City of Tucson's Planning Department. It focused on three underserved sites on Tucson's south side: the El Pueblo Neighborhood Center, the Laos Transit Center, and the Tucson Rodeo Grounds. The south side has a history of fractured relationships with formal planning institutions, which made community trust a central challenge of the project.</p>
+      <p class="project-overview">Working under a formal scope of work over three months, the team conducted a site analysis, facilitated stakeholder interviews with 15 community members and city officials, and led public engagement events at the El Pueblo Senior Center and the Laos Transit Center. The final deliverable outlines current conditions, community visions, and implementation strategies across three themes: Healthy Neighborhoods, Sense of Place, and Accessibility.</p>
+      <div class="callout callout-impact">
+        <p class="section-label" style="color: var(--warm);">Impact</p>
+        <p>Delivered as a formal planning document to the City of Tucson and recognized with the <strong>2023 Planning Excellence Gold Award</strong>, the highest recognition in the University of Arizona's urban planning program. The document is now a reference resource for future planning of the El Pueblo Center area.</p>
+      </div>
+      <img src="images/el_pueblo_cover.jpg" alt="El Pueblo Community Resource Study cover" class="project-image">
+      <img src="images/el_pueblo_site_map.jpg" alt="El Pueblo study site land use map showing the four key sites" class="project-image">
+      <p class="project-image-caption">Study site map showing land use, study area boundary, and the four key sites: El Pueblo Center, Laos Transit Center, Tucson Rodeo Grounds, and Rudy Garcia Park.</p>
+    </div>
+    <div>
+      <div class="contribution-block">
+        <p class="section-label">Contributions</p>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Defined the study area boundary and compiled demographic, health, and environmental data from Census ACS, CDC PLACES, and EPA sources using ArcGIS and Excel</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Led stakeholder interviews with Cassandra Becerra (Congressman Grijalva's office), Shay Jimenez (CUADRO Design), and Sarah Launius (City of Tucson Community Safety director)</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Designed all public-facing engagement materials in English and Spanish, including the bilingual recruitment flyer distributed at the El Pueblo Center and the community experience survey used at both engagement events</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Led the senior center engagement event; survey questions were written to capture what residents valued about their community and what they felt was missing</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Authored three of the seven vision sections: Urban Gardens, Signage and Wayfinding, and Equitable Community Development Plan</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Served as the team's public health and quality-of-life lead, integrating health equity framing across all seven sub-theme sections</span></div>
+      </div>
+      <img src="images/el_pueblo_flyer.jpg" alt="El Pueblo Study bilingual community recruitment flyer" class="project-image">
+      <p class="project-image-caption">Bilingual (English/Spanish) study recruitment flyer distributed at the El Pueblo Center and surrounding community, 2023.</p>
+      <div class="skills-block">
+        <p class="section-label">Methods &amp; tools</p>
+        <div class="skills-grid">
+          <span class="skill-tag">Stakeholder facilitation</span><span class="skill-tag">Community engagement design</span><span class="skill-tag">Bilingual outreach materials</span><span class="skill-tag">Survey instrument design</span><span class="skill-tag">GIS &amp; spatial analysis</span><span class="skill-tag">Health equity analysis</span><span class="skill-tag">Policy visioning</span><span class="skill-tag">Environmental justice</span><span class="skill-tag">Census &amp; ACS data</span><span class="skill-tag">CDC PLACES data</span><span class="skill-tag">Client deliverable production</span>
+        </div>
+      </div>
+      <div class="doc-links-row">
+        <a href="docs/el_pueblo_flyer.pdf" class="doc-link" target="_blank">View recruitment flyer</a>
+        <a href="docs/el_pueblo_survey.pdf" class="doc-link" target="_blank">View community survey</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECT 02: HEAT VULNERABILITY -->
+<div class="project-page">
+  <div class="project-header">
+    <div>
+      <p class="project-num">02 / 07</p>
+      <h2 class="project-title">Extreme Heat Vulnerability<br>of Manufactured Housing</h2>
+      <p class="project-context">Graduate Research, University of Arizona / SW-IFL, January 2023–January 2024</p>
+    </div>
+    <div class="project-meta">
+      <div><p class="meta-label">Funder</p><p class="meta-value">U.S. Department of Energy, Office of Biological and Environmental Research (Award DE-SC0023520)</p></div>
+      <div><p class="meta-label">Role</p><p class="meta-value">Second author and Graduate Research Assistant. Designed and executed the full GIS workflow; produced the core dataset; drafted first full manuscript excluding discussion and conclusion</p></div>
+      <div><p class="meta-label">Output</p><div class="published-badge">&#10003; Published: Urban Studies, 2025</div></div>
+      <div><p class="meta-label">Citation</p><p class="meta-value" style="font-size:12px;">Stoker, P., Santiago, X., &amp; Kear, M. (2025). Urban Studies. doi.org/10.1177/00420980251351241</p></div>
+      <div><a href="docs/02_heat_vulnerability.pdf" class="doc-link" target="_blank">View published paper</a></div>
+    </div>
+  </div>
+  <div class="project-body">
+    <div>
+      <p class="section-label">Overview</p>
+      <p class="project-overview">This research looked at how vegetation cover varies by housing type and tenure arrangement, and what that means for residents' exposure to extreme heat. The study focused on mobile and manufactured housing communities in Phoenix-Mesa, Tucson, and Flagstaff, combining 1.7 million county tax assessor parcel records with satellite imagery classified at 1-meter resolution.</p>
+      <p class="project-overview">The full GIS workflow was designed and executed as part of this research role, covering image classification, building footprint integration, accuracy validation, and statistical analysis at the parcel level. The finalized dataset was compiled and released publicly to support reproducibility.</p>
+      <div class="callout callout-finding">
+        <p class="section-label" style="color: var(--accent);">Key finding</p>
+        <p>Manufactured housing parcels have significantly less vegetation than single-family properties across all three cities, with MH units in park settings having the least of all. <strong>The vegetation gap between single-family and MH parcels ranges from 5% in Tucson to 9% in Phoenix,</strong> a measurable difference in heat exposure that comes down to how land is owned and managed, not just where it's located.</p>
+      </div>
+    </div>
+    <div>
+      <div class="contribution-block">
+        <p class="section-label">Contributions</p>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Executed the full GIS workflow: classified satellite imagery using a supervised machine learning algorithm, with manually drawn training samples for four land cover types across three metro areas</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Identified and resolved a systematic classification error where dirt was being read as impervious surface; fixed by integrating building footprint data, which pushed overall accuracy above 90%</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Ran zonal statistics to calculate vegetation cover per parcel and per building across 1.7 million properties</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Built a proof of concept on a subset of the study area before scaling to the full dataset</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Drafted the first full manuscript excluding discussion and conclusion, including the literature review</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Contributed to two rounds of peer review revisions and compiled the finalized dataset for public release</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Built an ArcGIS Online dashboard making parcel-level findings accessible to 50+ stakeholders across policy, public health, and planning</span></div>
+      </div>
+      <div class="skills-block">
+        <p class="section-label">Methods &amp; tools</p>
+        <div class="skills-grid">
+          <span class="skill-tag">ArcGIS Pro</span><span class="skill-tag">ArcGIS Online</span><span class="skill-tag">NAIP multispectral imagery</span><span class="skill-tag">Supervised classification (SVM)</span><span class="skill-tag">Land cover classification</span><span class="skill-tag">Zonal statistics</span><span class="skill-tag">Large-scale parcel analysis</span><span class="skill-tag">Climate adaptation</span><span class="skill-tag">Academic writing &amp; peer review</span><span class="skill-tag">Open data publication</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECT 03: BARCELONA -->
+<div class="project-page">
+  <div class="project-header">
+    <div>
+      <p class="project-num">03 / 07</p>
+      <h2 class="project-title">Barcelona Superblocks:<br>Graduate City Report</h2>
+      <p class="project-context">Academic Report, University of Arizona CAPLA, Transportation &amp; Land Use Planning, 2023</p>
+    </div>
+    <div class="project-meta">
+      <div><p class="meta-label">Course</p><p class="meta-value">PLG568: Transportation and Land Use Planning</p></div>
+      <div><p class="meta-label">Role</p><p class="meta-value">Sole author</p></div>
+      <div><p class="meta-label">Focus</p><p class="meta-value">Pedestrianization, traffic calming, public space activation, measurable health and environmental outcomes</p></div>
+      <div><a href="docs/03_barcelona.pdf" class="doc-link" target="_blank">View full report</a></div>
+    </div>
+  </div>
+  <div class="project-body">
+    <div>
+      <p class="section-label">Overview</p>
+      <p class="project-overview">This report examined Barcelona's Superblocks program, a city-scale urban mobility intervention that clusters nine city blocks into car-free interior zones, reroutes through-traffic to perimeter roads, and reclaims interior streets for pedestrian use and community activity.</p>
+      <p class="project-overview">The report analyzed the design logic and implementation of the Eixample Superblock, measured outcomes across air quality, noise, and active transportation, and drew out the planning principles that could apply elsewhere. It also engaged critically with equity concerns around the program, particularly gentrification pressure and who ends up benefiting from public space improvements.</p>
+      <div class="callout callout-context">
+        <p class="section-label" style="color: var(--blue);">Planning context</p>
+        <p>Car-centric street design is one of the most persistent barriers to healthy, livable cities. The Superblocks model shows how cities can reclaim street space in stages, with documented reductions in NO2 concentrations, road traffic noise, and urban heat, <strong>without requiring wholesale infrastructure reconstruction</strong>.</p>
+      </div>
+    </div>
+    <div>
+      <div class="contribution-block">
+        <p class="section-label">What the report covered</p>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Design logic of the Superblock model: how traffic is rerouted, how streets are redesigned, and how public space gets programmed once cars are removed</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Measured outcomes including air quality improvements, reduced noise exposure, and increased active transportation uptake</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Public health benefits tied to more walkable streets, including reduced stress and more opportunities for physical activity</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Equity and displacement concerns raised by residents and researchers, and how the program has responded to them</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Transferability to North American cities: what conditions need to be in place for this kind of intervention to work</span></div>
+      </div>
+      <div class="skills-block">
+        <p class="section-label">Methods &amp; tools</p>
+        <div class="skills-grid">
+          <span class="skill-tag">Transportation policy</span><span class="skill-tag">Active transportation</span><span class="skill-tag">Health impact assessment</span><span class="skill-tag">Urban design</span><span class="skill-tag">Traffic calming</span><span class="skill-tag">Equity analysis</span><span class="skill-tag">International case study</span><span class="skill-tag">Policy transfer</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECT 04: ROCINHA -->
+<div class="project-page">
+  <div class="project-header">
+    <div>
+      <p class="project-num">04 / 07</p>
+      <h2 class="project-title">Rocinha: Critical Issues<br>in Favela Urbanism</h2>
+      <p class="project-context">Seminar Report, University of Arizona CAPLA, International Planning, 2023</p>
+    </div>
+    <div class="project-meta">
+      <div><p class="meta-label">Course</p><p class="meta-value">PLG696D: International Planning, Dr. Seth Okyere</p></div>
+      <div><p class="meta-label">Role</p><p class="meta-value">Sole author</p></div>
+      <div><p class="meta-label">Location</p><p class="meta-value">Rocinha, Rio de Janeiro, Brazil. Brazil's largest favela, population 150,000–200,000</p></div>
+      <div><a href="docs/04_rocinha.pdf" class="doc-link" target="_blank">View full report</a></div>
+    </div>
+  </div>
+  <div class="project-body">
+    <div>
+      <p class="section-label">Overview</p>
+      <p class="project-overview">This report analyzed the critical urbanism challenges facing Rocinha, an informal settlement of up to 200,000 residents on the hillside of Dois Irmãos mountain in Rio de Janeiro's southern zone. It sits between two of the city's most affluent neighborhoods, a geographic reality that shapes both its political visibility and the nature of the government interventions it has received.</p>
+      <p class="project-overview">The report covered five interconnected issues: extreme construction density, tuberculosis rates eleven times Brazil's national average, natural hazard vulnerability, waste and wastewater management failure, and poor integration with the formal city. It evaluated the Favela-Bairro program (1995–2008) and the PAC Growth Acceleration Program (2007–2014).</p>
+      <div class="callout callout-hard">
+        <p class="section-label" style="color: var(--purple);">What made this hard</p>
+        <p>The PAC program spent R$160 million in Rocinha and produced a celebrated footbridge while largely bypassing basic sanitation. Evaluating why well-funded interventions fall short requires <strong>separating political optics from resident need</strong>. Understanding how pressure to perform for international audiences ahead of the 2014 World Cup and 2016 Olympics shaped what got built and what got left out was central to that analysis.</p>
+      </div>
+      <img src="images/rocinha_cover.jpg" alt="Rocinha favela at night, Rio de Janeiro" class="project-image">
+      <p class="project-image-caption">Rocinha, Rio de Janeiro. Brazil's largest favela, home to an estimated 150,000–200,000 residents on the hillside of Dois Irmãos mountain.</p>
+    </div>
+    <div>
+      <div class="contribution-block">
+        <p class="section-label">What the report covered</p>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Detailed analysis of five intersecting infrastructure and public health challenges, with supporting data and spatial context</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Critical review of the Favela-Bairro program, including a 97% increase in housing prices within upgraded favelas between 1995 and 1997 and the displacement that followed</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Analysis of the PAC program's gap between stated ambitions and actual delivery, looking at the role of the World Cup and Olympics and how residents responded</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Recommendation for MIT's LiDAR mapping initiative as a foundation for genuine participatory planning in informal settlements</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Engagement with Southern urbanism theory, informal settlement governance, and urban metabolism frameworks</span></div>
+      </div>
+      <div class="skills-block">
+        <p class="section-label">Methods &amp; tools</p>
+        <div class="skills-grid">
+          <span class="skill-tag">International planning</span><span class="skill-tag">Informal settlements</span><span class="skill-tag">Infrastructure analysis</span><span class="skill-tag">Program evaluation</span><span class="skill-tag">Displacement &amp; equity</span><span class="skill-tag">Participatory planning</span><span class="skill-tag">Public health</span><span class="skill-tag">Long-form analytical writing</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECT 05: GIS TABBED -->
+<div class="gis-page">
+  <div class="project-header">
+    <div>
+      <p class="project-num">05 / 07</p>
+      <h2 class="project-title">GIS &amp; Spatial Analysis</h2>
+      <p class="project-context">Graduate Research &amp; Consulting, University of Arizona / Integral Consulting, 2022–2024</p>
+    </div>
+    <div class="project-meta">
+      <div><p class="meta-label">Tools</p><p class="meta-value">ArcGIS Pro, ArcGIS Online, ArcMap, Pix4D, DJI Mavic 2 Pro, NAIP multispectral imagery, Excel, Tableau</p></div>
+      <div><p class="meta-label">Tabs</p><p class="meta-value">Heat Vulnerability Analysis &nbsp;·&nbsp; Social Vulnerability Assessment &nbsp;·&nbsp; Solar Farm Suitability &nbsp;·&nbsp; Grocery Store Suitability &nbsp;·&nbsp; UAS Land Surface Temperature &nbsp;·&nbsp; Cartographic Design</p></div>
+    </div>
+  </div>
+
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="showTab('heat')">Heat Vulnerability Analysis</button>
+    <button class="tab-btn" onclick="showTab('sva')">Social Vulnerability Assessment</button>
+    <button class="tab-btn" onclick="showTab('solar')">Solar Farm Suitability</button>
+    <button class="tab-btn" onclick="showTab('grocery')">Grocery Store Suitability</button>
+    <button class="tab-btn" onclick="showTab('uas')">UAS Land Surface Temperature</button>
+    <button class="tab-btn" onclick="showTab('carto')">Cartographic Design</button>
+  </div>
+
+  <!-- TAB 1: HEAT -->
+  <div id="tab-heat" class="tab-panel active">
+    <div class="tab-meta-row">
+      <div><p class="meta-label">Project</p><p class="meta-value">Extreme Heat Vulnerability: ArcGIS Online Dashboard &amp; Public Dataset</p></div>
+      <div><p class="meta-label">Partner</p><p class="meta-value">SW-IFL / University of Arizona</p></div>
+      <div><p class="meta-label">Period</p><p class="meta-value">2023–2024</p></div>
+      <div><p class="meta-label">Audience</p><p class="meta-value">50+ stakeholders across policy, public health, and planning</p></div>
+    </div>
+    <div>
+      <p class="section-label">Overview</p>
+      <p class="project-overview">An interactive ArcGIS Online dashboard was built to make the parcel-level heat vulnerability findings from the SW-IFL research accessible to a broad, non-technical audience. The dashboard presents findings across 1.7 million parcels in Tucson, Phoenix, and Flagstaff, letting users explore housing type comparisons, geographic patterns, and tenure-based differences without needing GIS expertise.</p>
+      <p class="project-overview">The full research dataset was compiled and released publicly through the SW-IFL repository, including metadata and a data dictionary, to support open access and reproducibility.</p>
+      <div class="callout callout-produced">
+        <p class="section-label">What this produced</p>
+        <p>A publicly accessible ArcGIS Online dashboard and a <strong>publicly released research dataset</strong> on the SW-IFL / University of Arizona repository, with open access to the full GIS data underlying the published Urban Studies paper.</p>
+      </div>
+      <a href="https://www.arcgis.com/home/item.html?id=5f9d96aab66f4f90a062abf916c25426" class="doc-link" target="_blank">View ArcGIS Online dashboard</a>
+    </div>
+    <div>
+      <div class="contribution-block">
+        <p class="section-label">Methods</p>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Designed dashboard layout and user experience for a non-GIS audience, prioritizing clarity of key findings over technical display</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Configured interactive layers showing vegetation cover, housing type, and tenure arrangement across 1.7 million parcels</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Independently compiled, structured, and documented the finalized research dataset for public release, including metadata and data dictionary</span></div>
+      </div>
+      <div class="skills-block">
+        <p class="section-label">Methods &amp; tools</p>
+        <div class="skills-grid">
+          <span class="skill-tag">ArcGIS Online</span><span class="skill-tag">Dashboard design</span><span class="skill-tag">Data communication</span><span class="skill-tag">Open data publication</span><span class="skill-tag">Metadata documentation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 2: SVA -->
+  <div id="tab-sva" class="tab-panel">
+    <div class="tab-meta-row">
+      <div><p class="meta-label">Project</p><p class="meta-value">Social Vulnerability Assessment: Marina, CA</p></div>
+      <div><p class="meta-label">Employer</p><p class="meta-value">Integral Consulting Inc., Santa Rosa, CA</p></div>
+      <div><p class="meta-label">Period</p><p class="meta-value">Summer 2022</p></div>
+      <div><p class="meta-label">Note</p><p class="meta-value">Final report is a client deliverable. Working methodology and process documentation shown here.</p></div>
+    </div>
+    <div>
+      <p class="section-label">Overview</p>
+      <p class="project-overview">This assessment evaluated social vulnerability across all census block groups in Marina, CA, a coastal community in Monterey County facing compounding risks from sea level rise, coastal erosion, and climate-driven hazards. The analysis was conducted at Integral Consulting and the final report is a client deliverable; what's shown here is the working methodology.</p>
+      <p class="project-overview">The assessment built a 12-variable vulnerability index drawing on the CDC/ATSDR Social Vulnerability Index and EPA EJScreen demographic indicators, applied across 11 census block groups. Variables covered socioeconomic status, demographic composition, health burden, transportation access, and housing characteristics. Thresholds were set against city and county benchmarks to identify which block groups showed significant vulnerability across each dimension.</p>
+      <div class="callout callout-produced">
+        <p class="section-label">What this produced</p>
+        <p>A vulnerability ranking across all Marina block groups, identifying two with 7 to 9 significant indicators out of 12 as highest priority. Findings fed directly into <strong>client recommendations for where to prioritize community resilience investment</strong> in a coastal hazard context.</p>
+      </div>
+    </div>
+    <div>
+      <div class="contribution-block">
+        <p class="section-label">Methods</p>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Selected and sourced 12 vulnerability variables at the census block group level from ACS, CDC SVI, EPA EJScreen, and EPA Smart Location Database</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Established significance thresholds for each variable using city and county benchmarks, then scored each CBG against all 12 thresholds</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Produced a vulnerability tier ranking across all 11 CBGs, identifying highest-priority areas for resilience investment</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Explored bivariate mapping approach to visualize intersection of social vulnerability and coastal hazard exposure (sea level rise, 1% annual chance wave event)</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Tools used: ArcGIS Pro, Census Geocoder, ACS Detailed Tables, NOAA Coastal Management data, Monterey County Open Data</span></div>
+      </div>
+      <div class="skills-block">
+        <p class="section-label">Methods &amp; tools</p>
+        <div class="skills-grid">
+          <span class="skill-tag">Social vulnerability assessment</span><span class="skill-tag">GIS index construction</span><span class="skill-tag">Environmental justice analysis</span><span class="skill-tag">CDC SVI &amp; EPA EJScreen</span><span class="skill-tag">ACS data</span><span class="skill-tag">Coastal hazard planning</span><span class="skill-tag">Client deliverable production</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 3: SOLAR FARM SUITABILITY -->
+  <div id="tab-solar" class="tab-panel">
+    <div class="tab-meta-row">
+      <div><p class="meta-label">Project</p><p class="meta-value">Solar Energy Farm Site Suitability Analysis: Maricopa County, AZ</p></div>
+      <div><p class="meta-label">Context</p><p class="meta-value">University of Arizona Graduate Certificate in GIS</p></div>
+      <div><p class="meta-label">Tools</p><p class="meta-value">ArcMap, Raster Calculator, Euclidean Distance, Zonal Statistics</p></div>
+      <div><p class="meta-label">Period</p><p class="meta-value">Fall 2021</p></div>
+    </div>
+    <div>
+      <p class="section-label">Overview</p>
+      <p class="project-overview">This analysis identifies suitable sites for utility-scale solar energy development in Maricopa County, Arizona, one of the highest solar irradiance regions in the country. The goal was to find parcels where land conditions, infrastructure access, and solar potential align well enough for development to be viable.</p>
+      <p class="project-overview">Seven weighted criteria were combined into a composite suitability surface, then cross-referenced against vacant, developable parcels to produce a shortlist of actionable sites. Two final candidate sites in Wittmann, AZ were selected for closer analysis, each covering 15 to 30 acres with over 50% highly suitable land and projected energy generation in the range of 800 to 1,400 MWh per month.</p>
+      <div class="callout callout-produced">
+        <p class="section-label">What this produced</p>
+        <p>A weighted composite suitability surface across Maricopa County, narrowed to <strong>5 candidate parcels meeting size and suitability thresholds</strong>, with two sites analysed in detail including acreage, suitability proportion, and projected monthly energy generation.</p>
+      </div>
+      <img src="images/solar_suitability_results.jpg" alt="Weighted suitability surface for solar farm development across Maricopa County" class="project-image">
+      <p class="project-image-caption">Final weighted suitability surface across Maricopa County, classified into high, moderate, and poor suitability zones based on 7 criteria including GHI (30%), substation proximity (20%), and slope (15%).</p>
+      <a href="docs/05a_solar_suitability.pdf" class="doc-link" target="_blank">View full analysis</a>
+    </div>
+    <div>
+      <div class="contribution-block">
+        <p class="section-label">Methods</p>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Selected 7 suitability criteria through a literature review of comparable solar suitability studies, weighting global horizontal irradiance most heavily (30%) followed by distance to electric substations (20%) and slope (15%)</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Processed and reclassified raster datasets for aspect, elevation, slope, land cover, annual temperature, and global horizontal irradiance, all extracted to the Maricopa County boundary</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Converted substation vector data to raster using the Euclidean Distance tool, then reclassified into suitability tiers for use in the weighted overlay</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Generated the final weighted suitability surface using the Raster Calculator, combining all seven criteria into a single composite score</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Used Zonal Statistics to cross-reference high-suitability areas with vacant developable parcels, filtering by minimum size (5+ acres) and suitability proportion (50%+) to produce the final candidate list</span></div>
+      </div>
+      <div class="skills-block">
+        <p class="section-label">Methods &amp; tools</p>
+        <div class="skills-grid">
+          <span class="skill-tag">Site suitability modelling</span><span class="skill-tag">Weighted raster overlay</span><span class="skill-tag">ArcMap</span><span class="skill-tag">Raster Calculator</span><span class="skill-tag">Euclidean Distance</span><span class="skill-tag">Zonal Statistics</span><span class="skill-tag">Renewable energy planning</span><span class="skill-tag">Land use analysis</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 4: GROCERY STORE SUITABILITY -->
+  <div id="tab-grocery" class="tab-panel">
+    <div class="tab-meta-row">
+      <div><p class="meta-label">Project</p><p class="meta-value">Grocery Store Site Suitability Analysis: Baltimore City, MD</p></div>
+      <div><p class="meta-label">Context</p><p class="meta-value">University of Arizona Graduate Certificate in GIS</p></div>
+      <div><p class="meta-label">Tools</p><p class="meta-value">ArcGIS Pro, Baltimore City Open Data</p></div>
+      <div><p class="meta-label">Period</p><p class="meta-value">Fall 2021</p></div>
+    </div>
+    <div>
+      <p class="section-label">Overview</p>
+      <p class="project-overview">Food insecurity in Baltimore City was already a serious structural problem before COVID-19. Nearly 100,000 residents were food insecure, with a $59 million annual food budget shortfall. During the pandemic, household food insecurity in Maryland spiked from 11% to 22%, compounding long-standing inequities tied to disinvestment, poverty, and racially segregated neighbourhood conditions.</p>
+      <p class="project-overview">This analysis uses four equity-driven criteria to identify which Baltimore community statistical areas are most in need of new grocery store development, using the Baltimore City Health Department's Healthy Baltimore 2020 objectives as a benchmark. Site selection went a step further by identifying city-owned vacant properties within the highest-need areas as concrete, immediately actionable development opportunities.</p>
+      <div class="callout callout-produced">
+        <p class="section-label">What this produced</p>
+        <p>A scored suitability map across all Baltimore community statistical areas, plus <strong>a set of city-owned vacant properties identified as candidate grocery store sites</strong>, available for purchase via open bid within the highest-need neighbourhoods.</p>
+      </div>
+      <img src="images/grocery_suitability_map.jpg" alt="Baltimore grocery store suitability analysis: scored community statistical areas" class="project-image">
+      <p class="project-image-caption">Final suitability scores across Baltimore community statistical areas (0–3 scale). Darkest areas met three of four equity criteria; no area met all four, reflecting the complexity of overlapping need.</p>
+      <a href="docs/05b_grocery_suitability.pdf" class="doc-link" target="_blank">View full analysis</a>
+    </div>
+    <div>
+      <div class="contribution-block">
+        <p class="section-label">Methods</p>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Designed an equity-centred criteria framework using four variables: percent Black/African American residents (threshold: 61.8%), percent households below the poverty line (threshold: 21.2%), fast food outlet density per 1,000 persons (threshold: 0.88), and distance from existing grocery stores (threshold: more than 0.5 miles)</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Thresholds were anchored to city-wide averages and Baltimore City Health Department objectives rather than arbitrary cutoffs, grounding the analysis in local equity benchmarks</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Scored all community statistical areas on a 0–4 scale based on how many criteria thresholds they met; no area scored a perfect 4, reflecting the complexity of overlapping need</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Overlaid highest-scoring areas with city-owned vacant building data to surface properties available for redevelopment as grocery store locations</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>All data sourced from Baltimore City Open Data portal; analysis conducted in ArcGIS Pro</span></div>
+      </div>
+      <div class="skills-block">
+        <p class="section-label">Methods &amp; tools</p>
+        <div class="skills-grid">
+          <span class="skill-tag">Site suitability modelling</span><span class="skill-tag">Food access &amp; food desert analysis</span><span class="skill-tag">Equity-driven criteria design</span><span class="skill-tag">ArcGIS Pro</span><span class="skill-tag">Healthy community planning</span><span class="skill-tag">Community statistical area analysis</span><span class="skill-tag">Vacant land analysis</span><span class="skill-tag">Environmental justice</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 5: UAS LAND SURFACE TEMPERATURE -->
+  <div id="tab-uas" class="tab-panel">
+    <div class="tab-meta-row">
+      <div><p class="meta-label">Project</p><p class="meta-value">Using UAS to Measure Land Surface Temperature and Classify Land Cover: Tucson, AZ</p></div>
+      <div><p class="meta-label">Context</p><p class="meta-value">RNR 522, University of Arizona Graduate Certificate in GIS</p></div>
+      <div><p class="meta-label">Tools</p><p class="meta-value">DJI Mavic 2 Pro, Pix4D Mapper, ArcGIS Pro</p></div>
+      <div><p class="meta-label">Period</p><p class="meta-value">Fall 2023</p></div>
+    </div>
+    <div>
+      <p class="section-label">Overview</p>
+      <p class="project-overview">This project explored whether land surface temperature varies meaningfully across different types of land cover and slope orientation, a question with direct relevance to urban heat and climate resilience work. The study area was a 15.6-acre private property in Tucson containing a mix of vegetation, impervious surfaces, bare ground, and three small water bodies, which made it a useful test case for understanding how cover type affects thermal conditions at a fine scale.</p>
+      <p class="project-overview">The workflow ran from field data collection through photogrammetric processing, thermal conversion, and spatial analysis. A drone collected 160 thermal and RGB images in a single flight at 328 feet above ground level. The resulting land cover classification achieved 85% overall accuracy, and temperature analysis confirmed that bare ground runs hottest (19.2°C average) while water stays coolest (12.5°C). East-facing slopes recorded the highest average temperature at 22.2°C.</p>
+      <div class="callout callout-produced">
+        <p class="section-label">What this produced</p>
+        <p>A complete drone-to-map pipeline: orthomosaic, surface and terrain models, canopy height model, land cover classification (85% accuracy), and a land surface temperature layer broken down by cover type and slope direction. <strong>Very few planning students have direct experience collecting and processing drone-based thermal remote sensing data.</strong></p>
+      </div>
+      <img src="images/uas_orthomosaic.jpg" alt="RGB orthomosaic of the Snyder property study area, Tucson AZ" class="project-image">
+      <p class="project-image-caption">RGB orthomosaic of the 15.6-acre study area generated from 160 drone images. The property includes vegetation, impervious surfaces, bare ground, and three water bodies.</p>
+      <img src="images/uas_land_cover.jpg" alt="Supervised land cover classification of the study area: 85% overall accuracy" class="project-image">
+      <p class="project-image-caption">Supervised land cover classification (85% overall accuracy). Bare ground ran hottest at 19.2°C average; water was coolest at 12.5°C. East-facing slopes recorded the highest mean temperature at 22.2°C.</p>
+      <a href="docs/05c_uas_thermal.pdf" class="doc-link" target="_blank">View full analysis</a>
+    </div>
+    <div>
+      <div class="contribution-block">
+        <p class="section-label">Methods</p>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Planned and flew a single-grid drone mission at 328ft above ground level with 75% forward and 80% side overlap, collecting 160 thermal and RGB images on November 8, 2023</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Processed all imagery in Pix4D Mapper to generate a 3D point cloud, digital surface model, digital terrain model, and RGB orthomosaic</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Converted raw thermal imagery to land surface temperature values using a MATLAB script, producing a continuous temperature raster across the study area</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>In ArcGIS Pro, derived slope and aspect models from the terrain model, built a canopy height model by subtracting the terrain from the surface model, and calculated the Green Leaf Index to separate living vegetation from soil and other surfaces</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Ran a supervised land cover classification using training samples, reaching 85% overall accuracy across four classes: vegetation, impervious, bare ground, and water</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Calculated mean land surface temperature by cover class and slope direction, finding bare ground hottest (19.2°C), followed by impervious (17.4°C), vegetation (16.2°C), and water (12.5°C). East-facing slopes were warmer than any other direction at 22.2°C</span></div>
+      </div>
+      <div class="skills-block">
+        <p class="section-label">Methods &amp; tools</p>
+        <div class="skills-grid">
+          <span class="skill-tag">UAS flight operations</span><span class="skill-tag">DJI Mavic 2 Pro</span><span class="skill-tag">Pix4D photogrammetry</span><span class="skill-tag">Thermal remote sensing</span><span class="skill-tag">Land surface temperature</span><span class="skill-tag">Land cover classification</span><span class="skill-tag">ArcGIS Pro</span><span class="skill-tag">MATLAB</span><span class="skill-tag">Canopy height modelling</span><span class="skill-tag">Microclimate analysis</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- TAB 6: CARTOGRAPHIC DESIGN -->
+  <div id="tab-carto" class="tab-panel">
+    <div class="tab-meta-row">
+      <div><p class="meta-label">Project</p><p class="meta-value">Downtown Chicago: Accessibility Matrix, Cartographic Design &amp; Spatial Communication</p></div>
+      <div><p class="meta-label">Context</p><p class="meta-value">LAR 570 / PLG 597, University of Arizona</p></div>
+      <div><p class="meta-label">Tools</p><p class="meta-value">ArcGIS Pro, EPA Smart Location Database, RTAMS transit data</p></div>
+      <div><p class="meta-label">Period</p><p class="meta-value">Fall 2021</p></div>
+    </div>
+    <div>
+      <p class="section-label">Overview</p>
+      <p class="project-overview">This coursework focused on cartographic design as a discipline in its own right. The primary piece is a multi-map series on food access and transportation equity in downtown Chicago, built around the question of how to present related spatial datasets so each map holds up on its own while together they tell a coherent story.</p>
+      <p class="project-overview">The second piece is a schematic diagram of the CTA Red Line, a standalone exercise in transit map design. The accessibility matrix series is about layering multiple variables across space. The Red Line diagram takes the opposite approach, stripping everything back to communicate a single network's structure as clearly as possible.</p>
+      <div class="callout callout-context">
+        <p class="section-label">The design challenge</p>
+        <p>Good cartographic design means the reader understands the data without being told how to read it. For the accessibility matrix, that meant applying <strong>consistent visual language across all maps</strong>: colour palette, typography, scale, and layout, so a viewer moving between panels immediately sees the spatial relationships. For the Red Line diagram, it meant deciding what to leave out.</p>
+      </div>
+      <img src="images/chicago_carto_cover.jpg" alt="Downtown Chicago Accessibility Matrix report cover" class="project-image">
+      <img src="images/chicago_accessibility_matrix.jpg" alt="Downtown Chicago accessibility matrix composite map spread" class="project-image">
+      <p class="project-image-caption">Composite accessibility matrix spread showing walkability index, grocery store status, and zero-car households across downtown Chicago census block groups.</p>
+      <a href="docs/05d_chicago_accessibility_matrix.pdf" class="doc-link" target="_blank">View full map series</a>
+    </div>
+    <div>
+      <div class="contribution-block">
+        <p class="section-label">Accessibility Matrix: map series</p>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Designed four individual maps (walkability index, grocery store locations, zero-car households, and a composite accessibility matrix), each working as a standalone while building toward the composite view</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Applied rule of thirds for figure-to-text ratio and grid-based column alignment throughout, so the layout stays consistent across all panels</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Sourced walkability and zero-car household data from the EPA Smart Location Database at census block group level; grocery store locations from City of Chicago open data</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>The subject matter was chosen deliberately: where low walkability, poor food access, and high zero-car household rates overlap, residents face real compounded barriers to getting healthy food</span></div>
+      </div>
+      <div class="contribution-block">
+        <p class="section-label">CTA Red Line: schematic diagram</p>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Designed as a standalone diagrammatic transit map, prioritizing legibility over geographic accuracy</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Station names, transfer points, and line routing were styled to communicate the network's structure at a glance, in the tradition of schematic transit cartography</span></div>
+      </div>
+      <div class="skills-block">
+        <p class="section-label">Methods &amp; tools</p>
+        <div class="skills-grid">
+          <span class="skill-tag">Cartographic design</span><span class="skill-tag">Map series design</span><span class="skill-tag">Schematic transit mapping</span><span class="skill-tag">Spatial communication</span><span class="skill-tag">ArcGIS Pro</span><span class="skill-tag">Document layout &amp; typography</span><span class="skill-tag">EPA Smart Location Database</span><span class="skill-tag">Multi-variable visualisation</span><span class="skill-tag">Food access mapping</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECT 06: CHICAGO ENVIRONMENTAL ACTION PLAN -->
+<div class="project-page">
+  <div class="project-header">
+    <div>
+      <p class="project-num">06 / 07</p>
+      <h2 class="project-title">Chicago Environmental<br>Action Plan</h2>
+      <p class="project-context">Graduate Studio, University of Arizona, 2023</p>
+    </div>
+    <div class="project-meta">
+      <div><p class="meta-label">Course</p><p class="meta-value">University of Arizona Master of Urban Planning</p></div>
+      <div><p class="meta-label">Scale</p><p class="meta-value">City of Chicago: energy, air & climate, water, biodiversity, agriculture, waste management</p></div>
+      <div><p class="meta-label">Output</p><p class="meta-value">25-page environmental action plan with city profile, equity-centred goals, sector strategies, and policy actions</p></div>
+    </div>
+  </div>
+  <div class="project-body">
+    <div>
+      <p class="section-label">Overview</p>
+      <p class="project-overview">This environmental action plan sets out a long-term sustainability framework for the City of Chicago, structured around six interconnected focus areas: energy, air and climate, water, biodiversity, agriculture, and waste management. The plan opens with a full city profile covering demographic data, housing tenure, transportation patterns, and baseline environmental conditions, then moves into sector-specific goals, strategies, and policy actions for each area.</p>
+      <p class="project-overview">The plan's central equity argument runs throughout: environmental burdens in Chicago fall disproportionately on Black, Latino, and low-income communities, and climate resilience efforts need to be designed to close those gaps. Each sector section follows a consistent goal-strategy-action structure, drawing on Chicago's existing climate plans, energy benchmarking data, and the "We Will Chicago" comprehensive plan to anchor recommendations in real policy context.</p>
+      <div class="callout callout-finding">
+        <p class="section-label">Equity thread</p>
+        <p>The plan's 20-year vision centres environmental justice across all six sectors, from clean energy tax districts in underserved neighbourhoods to urban agriculture incentive zones in food desert areas. Toronto's Eco-Roof Incentive Program is referenced as a model for green roof policy, a sign that <strong>Canadian cities are already doing some of this work</strong>.</p>
+      </div>
+      <img src="images/chicago_eap_profile.jpg" alt="Chicago city profile page from the 2023 Environmental Action Plan" class="project-image">
+      <p class="project-image-caption">Chicago city profile: demographics, housing tenure, and transportation to work. The plan opens with a full baseline profile before moving into sector-specific goals and strategies.</p>
+      <a href="docs/06_chicago_env_action_plan.pdf" class="doc-link" target="_blank">View full plan</a>
+    </div>
+    <div>
+      <div class="contribution-block">
+        <p class="section-label">What the plan covers</p>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>City profile with demographic, economic, housing, and transportation data drawn from 2020 ACS 5-year estimates and Chicago municipal reports</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Energy: goals to reach 50% renewable energy in 10 years, with strategies including mandatory microgrids for large residential buildings and Clean Energy Tax Districts for low-income areas</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Air and climate: goals to reduce particulate matter and ozone-forming emissions by 50%, backed by strengthened industrial emissions ordinances and a 250,000-tree urban canopy initiative</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Water: goals addressing stormwater quality and affordability for low-income households, with strategies including green roof requirements for commercial development and a residential rainwater harvesting rebate program</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Biodiversity: goals for new protected areas and native plantings, supported by a Chicago Biodiversity Monitoring Program building on Lincoln Park Zoo wildlife research</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Agriculture: goals targeting food desert conditions and urban farming barriers, with strategies including revising the Urban Agriculture Zoning Ordinance and establishing Urban Agriculture Incentive Zones modelled on California programs</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Waste management: goals for a 50% increase in residential recycling and 75% diversion of demolition materials from landfills, with a material exchange incentive program and incinerator site analysis framework</span></div>
+      </div>
+      <div class="skills-block">
+        <p class="section-label">Methods &amp; tools</p>
+        <div class="skills-grid">
+          <span class="skill-tag">Environmental action planning</span><span class="skill-tag">Climate policy</span><span class="skill-tag">Equity-centred planning</span><span class="skill-tag">Stormwater management</span><span class="skill-tag">Urban agriculture policy</span><span class="skill-tag">Energy planning</span><span class="skill-tag">Biodiversity &amp; green infrastructure</span><span class="skill-tag">Municipal policy analysis</span><span class="skill-tag">City profiling</span><span class="skill-tag">Goal-strategy-action frameworks</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECT 07: UMD -->
+<div class="project-page">
+  <div class="project-header">
+    <div>
+      <p class="project-num">07 / 07</p>
+      <h2 class="project-title">Community Engagement &amp;<br>Environmental Justice</h2>
+      <p class="project-context">Research Internship, University of Maryland CEEJH Lab, August 2020–May 2021</p>
+    </div>
+    <div class="project-meta">
+      <div><p class="meta-label">Institution</p><p class="meta-value">University of Maryland CEEJH Lab, in partnership with Duke University</p></div>
+      <div><p class="meta-label">Role</p><p class="meta-value">Research Intern, community engagement materials, public communication design, outreach for air quality monitoring and disaster preparedness campaigns</p></div>
+      <div><p class="meta-label">Output</p><p class="meta-value">Two published papers; disaster preparedness toolkits; community engagement infographics and flyers</p></div>
+    </div>
+  </div>
+  <div class="project-body">
+    <div>
+      <p class="section-label">Overview</p>
+      <p class="project-overview">This internship focused on producing public-facing materials for community engagement campaigns in communities carrying disproportionate environmental health burdens. Projects spanned air quality monitoring in Baltimore, a disaster preparedness initiative for communities at risk from contaminant releases during extreme weather in North and South Carolina, and public education on industrial pollution and environmental justice.</p>
+      <p class="project-overview">Two samples from this work are shown: an environmental justice infographic on the 2014 Dan River Coal Ash Spill (covering health risks, demographic vulnerability, and an estimated $220.5 million in economic losses) and a community focus group recruitment flyer for the North Charleston, SC disaster resilience study.</p>
+      <div class="callout callout-impact">
+        <p class="section-label" style="color: var(--warm);">Impact</p>
+        <p>Contributed to two published papers on environmental justice and health disparities. Disaster preparedness toolkits were used by communities in North and South Carolina facing documented contaminant release risk. <strong>All public-facing materials were designed to communicate complex environmental health data clearly</strong> to residents without technical backgrounds.</p>
+      </div>
+    </div>
+    <div>
+      <div class="contribution-block">
+        <p class="section-label">Contributions</p>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Designed the Dan River Coal Ash Spill infographic, covering contamination sources, demographics, $220.5M in economic losses, and health risks from arsenic, mercury, lead, and chromium exposure</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Produced community recruitment flyers for focus groups in North Charleston, SC for a UMD/Duke University study on contaminant release resilience</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Supported air quality monitoring outreach in Baltimore, coordinating community participation and translating monitoring findings for a general audience</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Helped produce disaster preparedness toolkits for communities in North and South Carolina</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Developed digital outreach content for the Maryland Department of Health's Environmental Public Health Tracking tools</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Contributed to two published papers on environmental justice and health disparities</span></div>
+      </div>
+      <div class="skills-block">
+        <p class="section-label">Methods &amp; tools</p>
+        <div class="skills-grid">
+          <span class="skill-tag">Environmental justice</span><span class="skill-tag">Public communication design</span><span class="skill-tag">Community outreach</span><span class="skill-tag">Infographic production</span><span class="skill-tag">Disaster preparedness</span><span class="skill-tag">Air quality monitoring</span><span class="skill-tag">Focus group recruitment</span><span class="skill-tag">Research translation</span>
+        </div>
+      </div>
+      <div class="doc-links-row">
+        <a href="docs/07_coal_ash_infographic.pdf" class="doc-link" target="_blank">View coal ash infographic</a>
+        <a href="docs/07_north_charleston_flyer.pdf" class="doc-link" target="_blank">View focus group recruitment flyer</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function showTab(id) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>
