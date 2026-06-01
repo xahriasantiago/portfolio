@@ -42,13 +42,29 @@
   /* TOC */
   .toc-page { min-height: 100vh; padding: 4rem; background: var(--white); page-break-after: always; }
   .toc-header { font-family: 'DM Serif Display', serif; font-size: 2.5rem; margin-bottom: 3rem; }
-  .toc-item { display: flex; align-items: baseline; gap: 1rem; padding: 1.25rem 0; border-bottom: 1px solid var(--rule); }
   .toc-num { font-size: 11px; color: var(--ink-light); font-weight: 500; letter-spacing: 0.1em; min-width: 28px; }
   .toc-content { flex: 1; }
   .toc-title { font-size: 1.1rem; font-weight: 500; margin-bottom: 0.2rem; }
   .toc-meta { font-size: 13px; color: var(--ink-light); }
   .toc-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.5rem; }
   .toc-tag { font-size: 11px; background: var(--tag-bg); color: var(--ink-mid); padding: 2px 8px; border-radius: 3px; }
+
+  /* TOC hover */
+  .toc-item { display: flex; align-items: baseline; gap: 1rem; padding: 1.25rem 0.5rem; border-bottom: 1px solid var(--rule); cursor: pointer; transition: background 0.12s; border-radius: 4px; margin: 0 -0.5rem; }
+  .toc-item:hover { background: var(--accent-light); }
+  .toc-item:hover .toc-title { color: var(--accent); }
+  .toc-item:hover .toc-num { color: var(--accent); }
+
+  /* BACK BUTTON on project pages */
+  .back-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; color: var(--ink-light); background: none; border: none; cursor: pointer; padding: 0; margin-bottom: 1.5rem; font-family: 'DM Sans', sans-serif; transition: color 0.15s; }
+  .back-btn:hover { color: var(--accent); }
+  .back-btn::before { content: "←"; }
+
+  /* FOOTER */
+  .site-footer { background: var(--white); border-top: 1px solid var(--rule); padding: 1.5rem 4rem; display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--ink-light); }
+  .site-footer a { color: var(--ink-light); text-decoration: none; transition: color 0.15s; }
+  .site-footer a:hover { color: var(--accent); }
+  .site-footer-links { display: flex; gap: 1.5rem; }
 
   /* PROJECT PAGES */
   .project-page { padding: 3rem 4rem 0; background: var(--white); page-break-after: always; border-top: 1px solid var(--rule); }
@@ -103,8 +119,11 @@
   .doc-link:hover { background: var(--accent-light); }
   .doc-link::before { content: "↗"; font-size: 12px; }
   .doc-links-row { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem; }
-  .project-image { width: 100%; border-radius: 4px; margin-top: 1.5rem; display: block; border: 1px solid var(--rule); }
-  .project-image-caption { font-size: 12px; color: var(--ink-light); margin-top: 0.4rem; font-style: italic; }
+  .project-image { width: 100%; max-height: 480px; object-fit: contain; object-position: top left; border-radius: 4px; margin-top: 1.5rem; display: block; border: 1px solid var(--rule); background: var(--page); }
+  .project-image-caption { font-size: 12px; color: var(--ink-light); margin-top: 0.4rem; font-style: italic; max-width: 100%; }
+  .image-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem; }
+  .image-pair img { width: 100%; height: 280px; object-fit: cover; object-position: center; border-radius: 4px; border: 1px solid var(--rule); margin-top: 0; }
+  .image-pair-caption { font-size: 12px; color: var(--ink-light); margin-top: 0.4rem; font-style: italic; grid-column: 1 / -1; }
 
   /* GIS PAGE: TABBED */
   .gis-page { min-height: 100vh; padding: 4rem; background: var(--white); page-break-after: always; }
@@ -113,14 +132,12 @@
   .tab-btn:hover { color: var(--ink); }
   .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
   .tab-panel { display: none !important; }
-  .tab-panel.active { display: grid !important; grid-template-columns: 1fr 1fr; gap: 3rem; max-width: 100%; }
-  .tab-panel.active > div { min-width: 0; }
-  .tab-meta-row { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule); grid-column: 1 / -1; }
+  .tab-panel.active { display: flex !important; flex-direction: column; }
+  .tab-panel-body { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .tab-panel-body > div { min-width: 0; }
+  .tab-meta-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem 1.5rem; margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--rule); }
 
   /* IMAGE SIZING */
-  .project-image { width: 100%; max-height: 320px; object-fit: contain; object-position: top left; border-radius: 4px; margin-top: 1.5rem; display: block; border: 1px solid var(--rule); background: var(--page); }
-  .project-image-caption { font-size: 12px; color: var(--ink-light); margin-top: 0.4rem; font-style: italic; }
-
   /* ABOUT PAGE: tighter spacing */
   .about-page { padding: 4rem; background: var(--white); page-break-after: always; }
   .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 2rem; }
@@ -131,8 +148,6 @@
   .about-fun p { font-size: 14px; color: var(--ink-mid); line-height: 1.7; }
 
   /* BACK TO TOP */
-  .back-to-top { position: fixed; bottom: 2rem; right: 2rem; background: var(--accent); color: white; border: none; border-radius: 50%; width: 42px; height: 42px; font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15); z-index: 99; transition: opacity 0.2s; text-decoration: none; line-height: 1; }
-  .back-to-top:hover { opacity: 0.85; }
   /* STICKY NAV + DROPDOWN */
   .sticky-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(250,250,248,0.97); backdrop-filter: blur(8px); border-bottom: 1px solid var(--rule); display: flex; align-items: center; justify-content: space-between; padding: 0.6rem 2rem; font-size: 12px; }
   .sticky-nav-name { font-weight: 500; color: var(--ink); }
@@ -186,29 +201,28 @@
 
 <!-- STICKY NAV -->
 <nav class="sticky-nav">
-  <span class="sticky-nav-name">Xahria Santiago</span>
+  <span class="sticky-nav-name" style="cursor:pointer;" onclick="showSection('cover')">Xahria Santiago</span>
   <div class="sticky-nav-right">
-    <a href="mailto:xahria.santiago@gmail.com">xahria.santiago@gmail.com</a>
-    <a href="https://linkedin.com/in/xahria-santiago" target="_blank">LinkedIn</a>
+    <a href="#" onclick="showSection('toc'); return false;">Contents</a>
+    <a href="#" onclick="showSection('about'); return false;">About</a>
     <div class="nav-dropdown">
       <button class="nav-dropdown-btn" onclick="toggleNav()">Projects</button>
       <div class="nav-dropdown-menu" id="navMenu">
-        <a href="#project-01" onclick="closeNav()"><span class="nav-item-num">01</span><span class="nav-item-text"><div class="nav-item-title">El Pueblo Community Resource Study</div><div class="nav-item-category">Community Planning · Gold Award</div></span></a>
-        <a href="#project-02" onclick="closeNav()"><span class="nav-item-num">02</span><span class="nav-item-text"><div class="nav-item-title">Extreme Heat Vulnerability of Manufactured Housing</div><div class="nav-item-category">GIS Research · Published in Urban Studies</div></span></a>
-        <a href="#project-03" onclick="closeNav()"><span class="nav-item-num">03</span><span class="nav-item-text"><div class="nav-item-title">Barcelona Superblocks</div><div class="nav-item-category">Urban Design · Active Transportation</div></span></a>
-        <a href="#project-04" onclick="closeNav()"><span class="nav-item-num">04</span><span class="nav-item-text"><div class="nav-item-title">Rocinha: Urbanism of Brazil's Largest Favela</div><div class="nav-item-category">International Planning · Informal Settlements</div></span></a>
-        <a href="#project-05" onclick="closeNav()"><span class="nav-item-num">05</span><span class="nav-item-text"><div class="nav-item-title">GIS &amp; Spatial Analysis</div><div class="nav-item-category">6 Analyses · Water Demand · Site Suitability · Remote Sensing · Cartography</div></span></a>
-        <a href="#project-06" onclick="closeNav()"><span class="nav-item-num">06</span><span class="nav-item-text"><div class="nav-item-title">Chicago Environmental Action Plan</div><div class="nav-item-category">Environmental Planning · Climate Policy</div></span></a>
-        <a href="#project-07" onclick="closeNav()"><span class="nav-item-num">07</span><span class="nav-item-text"><div class="nav-item-title">Community Engagement &amp; Environmental Justice</div><div class="nav-item-category">UMD CEEJH Lab · EJ Research</div></span></a>
+        <a href="#" onclick="showSection('project-01'); return false;"><span class="nav-item-num">01</span><span class="nav-item-text"><div class="nav-item-title">El Pueblo Community Resource Study</div><div class="nav-item-category">Community Planning · Gold Award</div></span></a>
+        <a href="#" onclick="showSection('project-02'); return false;"><span class="nav-item-num">02</span><span class="nav-item-text"><div class="nav-item-title">Extreme Heat Vulnerability of Manufactured Housing</div><div class="nav-item-category">GIS Research · Published in Urban Studies</div></span></a>
+        <a href="#" onclick="showSection('project-03'); return false;"><span class="nav-item-num">03</span><span class="nav-item-text"><div class="nav-item-title">Barcelona Superblocks</div><div class="nav-item-category">Urban Design · Active Transportation</div></span></a>
+        <a href="#" onclick="showSection('project-04'); return false;"><span class="nav-item-num">04</span><span class="nav-item-text"><div class="nav-item-title">Rocinha: Urbanism of Brazil's Largest Favela</div><div class="nav-item-category">International Planning · Informal Settlements</div></span></a>
+        <a href="#" onclick="showSection('project-05'); return false;"><span class="nav-item-num">05</span><span class="nav-item-text"><div class="nav-item-title">GIS &amp; Spatial Analysis</div><div class="nav-item-category">6 Analyses · Water Demand · Site Suitability · Remote Sensing · Cartography</div></span></a>
+        <a href="#" onclick="showSection('project-06'); return false;"><span class="nav-item-num">06</span><span class="nav-item-text"><div class="nav-item-title">Chicago Environmental Action Plan</div><div class="nav-item-category">Environmental Planning · Climate Policy</div></span></a>
+        <a href="#" onclick="showSection('project-07'); return false;"><span class="nav-item-num">07</span><span class="nav-item-text"><div class="nav-item-title">Community Engagement &amp; Environmental Justice</div><div class="nav-item-category">UMD CEEJH Lab · EJ Research</div></span></a>
       </div>
     </div>
   </div>
 </nav>
 
-<a href="#top" class="back-to-top" title="Back to top">↑</a>
 
 <!-- COVER -->
-<div class="cover">
+<div id="cover" class="cover">
   <div class="cover-top">
     <span class="cover-label">Planning Portfolio</span>
     <span class="cover-label">2026</span>
@@ -219,6 +233,9 @@
     <div class="cover-rule"></div>
     <p class="cover-subtitle">Urban planner and GIS analyst working at the intersection of healthy community planning, environmental justice, and climate resilience. My work focuses on the question of who gets to live in a healthy place, and what it takes to change that.</p>
     <span class="cover-availability">Open to healthy community, environmental, and climate planning roles in Canada</span>
+    <div style="margin-top: 2rem;">
+      <button onclick="showSection('toc')" style="background: var(--accent); color: white; border: none; border-radius: 4px; padding: 10px 24px; font-size: 14px; font-family: 'DM Sans', sans-serif; font-weight: 500; cursor: pointer; transition: opacity 0.15s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">View portfolio →</button>
+    </div>
   </div>
   <div class="cover-side">
     <p class="cover-side-label">Focus areas</p>
@@ -246,8 +263,11 @@
 </div>
 
 <!-- TOC -->
-<div class="toc-page">
-  <h2 class="toc-header">Projects</h2>
+<div id="toc" class="toc-page">
+  <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:3rem;">
+    <h2 class="toc-header" style="margin-bottom:0;">Portfolio</h2>
+    <a href="#" onclick="showSection('about'); return false;" style="font-size:13px; color:var(--accent); text-decoration:none; font-weight:500;">About Xahria →</a>
+  </div>
   <div class="toc-item">
     <span class="toc-num">01</span>
     <div class="toc-content">
@@ -307,7 +327,7 @@
 </div>
 
 <!-- ABOUT -->
-<div class="about-page">
+<div id="about" class="about-page">
   <p class="cover-eyebrow">About</p>
   <h2 class="toc-header">Xahria Santiago</h2>
   <div class="about-grid">
@@ -319,8 +339,8 @@
         <p>Holds an MS in Urban Planning and a Graduate Certificate in GIS from the University of Arizona, and a BS in Public Health Science from the University of Maryland. Currently based in Toronto, ON, seeking roles in healthy community planning, environmental planning, and climate adaptation.</p>
       </div>
       <div class="about-block">
-        <p class="section-label">Recognition</p>
-        <p>2023 Planning Excellence Gold Award, University of Arizona CAPLA. Published in Urban Studies (2025) as second author on peer-reviewed research on extreme heat vulnerability and manufactured housing.</p>
+        <p class="section-label">Contact</p>
+        <p>xahria.santiago@gmail.com<br>(301) 312-0605<br><a href="https://linkedin.com/in/xahria-santiago" style="color: var(--accent);">linkedin.com/in/xahria-santiago</a><br>Toronto, ON</p>
       </div>
       <div class="about-fun">
         <p class="section-label" style="color: var(--accent);">Beyond planning</p>
@@ -334,11 +354,15 @@
       </div>
       <div class="about-block">
         <p class="section-label">Tools and methods</p>
-        <p>ArcGIS Pro, ArcGIS Online, ArcMap, Pix4D, DJI Mavic 2 Pro, Adobe InDesign, Excel, Tableau. Quantitative spatial analysis, supervised image classification, social vulnerability indexing, site suitability modelling, community survey design, stakeholder engagement.</p>
+        <p>ArcGIS Pro, ArcGIS Online, ArcMap, Pix4D, DJI Mavic 2 Pro, Adobe InDesign, Excel, Tableau. Quantitative spatial analysis, supervised image classification, social vulnerability indexing, site suitability modelling, community survey design, stakeholder engagement, policy analysis, official plan and bylaw review.</p>
       </div>
       <div class="about-block">
-        <p class="section-label">Contact</p>
-        <p>xahria.santiago@gmail.com<br>(301) 312-0605<br><a href="https://linkedin.com/in/xahria-santiago" style="color: var(--accent);">linkedin.com/in/xahria-santiago</a><br>Toronto, ON</p>
+        <p class="section-label">Recognition</p>
+        <p>2023 Planning Excellence Gold Award, University of Arizona CAPLA. Published in Urban Studies (2025) as second author on peer-reviewed research on extreme heat vulnerability and manufactured housing. Conference paper co-author, CCWI/WDSA 2024, Ferrara, Italy.</p>
+      </div>
+      <div class="about-block">
+        <p class="section-label">Education</p>
+        <p>MS Urban Planning, University of Arizona, 2023<br>Graduate Certificate in GIS, University of Arizona, 2024<br>BS Public Health Science, University of Maryland, 2021</p>
       </div>
     </div>
   </div>
@@ -423,6 +447,8 @@
         <p class="section-label" style="color: var(--accent);">Key finding</p>
         <p>Manufactured housing parcels have significantly less vegetation than single-family properties across all three cities, with MH units in park settings having the least of all. <strong>The vegetation gap between single-family and MH parcels ranges from 5% in Tucson to 9% in Phoenix,</strong> a measurable difference in heat exposure that comes down to how land is owned and managed, not just where it's located.</p>
       </div>
+      <img src="images/heat_vulnerability_study_area.png" alt="Study area map showing three Arizona metropolitan areas: Phoenix-Mesa, Tucson, and Flagstaff" class="project-image">
+      <p class="project-image-caption">Study area map showing the three metropolitan areas in the analysis. Each city is shown with its urbanized footprint (dark gray) and a 5-mile buffer zone (light gray). Average temperatures reflect the significant climatic difference between the low-elevation desert cities and Flagstaff at higher elevation: Phoenix-Mesa (29.7°C), Tucson (28°C), and Flagstaff (17.1°C).</p>
     </div>
     <div>
       <div class="contribution-block">
@@ -431,8 +457,7 @@
         <div class="contribution-item"><span class="contribution-dot"></span><span>Identified and resolved a systematic classification error where dirt was being read as impervious surface; fixed by integrating building footprint data, which pushed overall accuracy above 90%</span></div>
         <div class="contribution-item"><span class="contribution-dot"></span><span>Ran zonal statistics to calculate vegetation cover per parcel and per building across 1.7 million properties</span></div>
         <div class="contribution-item"><span class="contribution-dot"></span><span>Built a proof of concept on a subset of the study area before scaling to the full dataset</span></div>
-        <div class="contribution-item"><span class="contribution-dot"></span><span>Drafted the first full manuscript excluding discussion and conclusion, including the literature review</span></div>
-        <div class="contribution-item"><span class="contribution-dot"></span><span>Contributed to two rounds of peer review revisions and compiled the finalized dataset for public release</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Wrote the first full draft of the manuscript, covering the literature review, study area, data, and methods sections; contributed to two rounds of peer review revisions</span></div>
         <div class="contribution-item"><span class="contribution-dot"></span><span>Built an ArcGIS Online dashboard making parcel-level findings accessible to 50+ stakeholders across policy, public health, and planning</span></div>
       </div>
       <div class="skills-block">
@@ -566,6 +591,7 @@
       <div><p class="meta-label">Output</p><p class="meta-value">Conference paper presented at CCWI/WDSA 2024, Ferrara, Italy</p></div>
       <div><p class="meta-label">Period</p><p class="meta-value">2022–2024</p></div>
     </div>
+    <div class="tab-panel-body">
     <div>
       <p class="section-label">Overview</p>
       <p class="project-overview">The Salt River Project provides water to 13 cities in the Phoenix metro area. As temperatures rise and precipitation patterns shift, understanding how outdoor water demand will change under different climate scenarios is a critical planning question for the region. This project developed a quantitative framework to estimate those demand changes — accounting for pool evaporation, vegetation irrigation requirements, and historically observed irrigation inefficiencies across all 13 municipalities.</p>
@@ -590,6 +616,7 @@
         </div>
       </div>
     </div>
+    </div>
   </div>
 
   <!-- TAB 2: SVA -->
@@ -600,6 +627,7 @@
       <div><p class="meta-label">Period</p><p class="meta-value">Summer 2022</p></div>
       <div><p class="meta-label">Note</p><p class="meta-value">Final report is a client deliverable. The variable selection framework, scoring methodology, and block-group findings shown here.</p></div>
     </div>
+    <div class="tab-panel-body">
     <div>
       <p class="section-label">Overview</p>
       <p class="project-overview">This assessment evaluated social vulnerability across all census block groups in Marina, CA, a coastal community in Monterey County facing compounding risks from sea level rise, coastal erosion, and climate-driven hazards. The analysis was conducted at Integral Consulting and the final report is a client deliverable; what's shown here is the working methodology.</p>
@@ -625,6 +653,7 @@
         </div>
       </div>
     </div>
+    </div>
   </div>
 
   <!-- TAB 3: SOLAR FARM SUITABILITY -->
@@ -635,6 +664,7 @@
       <div><p class="meta-label">Tools</p><p class="meta-value">ArcMap, Raster Calculator, Euclidean Distance, Zonal Statistics</p></div>
       <div><p class="meta-label">Period</p><p class="meta-value">Fall 2021</p></div>
     </div>
+    <div class="tab-panel-body">
     <div>
       <p class="section-label">Overview</p>
       <p class="project-overview">This analysis identifies suitable sites for utility-scale solar energy development in Maricopa County, Arizona, one of the highest solar irradiance regions in the country. The goal was to find parcels where land conditions, infrastructure access, and solar potential align well enough for development to be viable.</p>
@@ -663,6 +693,7 @@
         </div>
       </div>
     </div>
+    </div>
   </div>
 
   <!-- TAB 4: GROCERY STORE SUITABILITY -->
@@ -673,6 +704,7 @@
       <div><p class="meta-label">Tools</p><p class="meta-value">ArcGIS Pro, Baltimore City Open Data</p></div>
       <div><p class="meta-label">Period</p><p class="meta-value">Fall 2021</p></div>
     </div>
+    <div class="tab-panel-body">
     <div>
       <p class="section-label">Overview</p>
       <p class="project-overview">Food insecurity in Baltimore City was already a serious structural problem before COVID-19. Nearly 100,000 residents were food insecure, with a $59 million annual food budget shortfall. During the pandemic, household food insecurity in Maryland spiked from 11% to 22%, compounding long-standing inequities tied to disinvestment, poverty, and racially segregated neighbourhood conditions.</p>
@@ -701,6 +733,7 @@
         </div>
       </div>
     </div>
+    </div>
   </div>
 
   <!-- TAB 5: UAS LAND SURFACE TEMPERATURE -->
@@ -711,6 +744,7 @@
       <div><p class="meta-label">Tools</p><p class="meta-value">DJI Mavic 2 Pro, Pix4D Mapper, ArcGIS Pro</p></div>
       <div><p class="meta-label">Period</p><p class="meta-value">Fall 2023</p></div>
     </div>
+    <div class="tab-panel-body">
     <div>
       <p class="section-label">Overview</p>
       <p class="project-overview">This project explored whether land surface temperature varies meaningfully across different types of land cover and slope orientation, a question with direct relevance to urban heat and climate resilience work. The study area was a 15.6-acre private property in Tucson containing a mix of vegetation, impervious surfaces, bare ground, and three small water bodies, which made it a useful test case for understanding how cover type affects thermal conditions at a fine scale.</p>
@@ -719,10 +753,11 @@
         <p class="section-label">What this produced</p>
         <p>A complete drone-to-map pipeline: orthomosaic, surface and terrain models, canopy height model, land cover classification (85% accuracy), and a land surface temperature layer broken down by cover type and slope direction. <strong>Very few planning students have direct experience collecting and processing drone-based thermal remote sensing data.</strong></p>
       </div>
-      <img src="images/uas_orthomosaic.jpg" alt="RGB orthomosaic of the Snyder property study area, Tucson AZ" class="project-image">
-      <p class="project-image-caption">RGB orthomosaic of the 15.6-acre study area generated from 160 drone images. The property includes vegetation, impervious surfaces, bare ground, and three water bodies.</p>
-      <img src="images/uas_land_cover.jpg" alt="Supervised land cover classification of the study area: 85% overall accuracy" class="project-image">
-      <p class="project-image-caption">Supervised land cover classification (85% overall accuracy). Bare ground ran hottest at 19.2°C average; water was coolest at 12.5°C. East-facing slopes recorded the highest mean temperature at 22.2°C.</p>
+      <div class="image-pair">
+        <img src="images/uas_orthomosaic.jpg" alt="RGB orthomosaic of the study area">
+        <img src="images/uas_land_cover.jpg" alt="Supervised land cover classification — 85% accuracy">
+        <p class="image-pair-caption">Left: RGB orthomosaic generated from 160 drone images. Right: supervised land cover classification (85% overall accuracy) — bare ground hottest at 19.2°C, water coolest at 12.5°C, east-facing slopes highest at 22.2°C.</p>
+      </div>
       <a href="docs/05c_uas_thermal.pdf" class="doc-link" target="_blank">View full presentation</a>
     </div>
     <div>
@@ -753,6 +788,7 @@
       <div><p class="meta-label">Tools</p><p class="meta-value">ArcGIS Pro, EPA Smart Location Database, RTAMS transit data</p></div>
       <div><p class="meta-label">Period</p><p class="meta-value">Fall 2021</p></div>
     </div>
+    <div class="tab-panel-body">
     <div>
       <p class="section-label">Overview</p>
       <p class="project-overview">This coursework focused on cartographic design as a discipline in its own right. The primary piece is a multi-map series on food access and transportation equity in downtown Chicago, built around the question of how to present related spatial datasets so each map holds up on its own while together they tell a coherent story.</p>
@@ -788,6 +824,7 @@
       </div>
     </div>
   </div>
+</div>
 </div>
 
 <!-- PROJECT 06: CHICAGO ENVIRONMENTAL ACTION PLAN -->
@@ -886,12 +923,56 @@
 </div>
 
 <script>
+// ─── TAB SWITCHING (within GIS page) ───────────────────────────
 function showTab(id) {
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('tab-' + id).classList.add('active');
   event.target.classList.add('active');
 }
+
+// ─── SECTION SWITCHING ─────────────────────────────────────────
+const SECTIONS = ['cover','toc','about','project-01','project-02','project-03','project-04','project-05','project-06','project-07'];
+
+function showSection(id) {
+  SECTIONS.forEach(s => {
+    const el = document.getElementById(s);
+    if (el) el.style.display = (s === id) ? '' : 'none';
+  });
+  window.scrollTo(0, 0);
+  closeNav();
+  // Update nav label
+  const map = {
+    'cover': 'Portfolio', 'toc': 'Contents', 'about': 'About',
+    'project-01': '01', 'project-02': '02', 'project-03': '03',
+    'project-04': '04', 'project-05': '05', 'project-06': '06', 'project-07': '07'
+  };
+  const navLabel = document.getElementById('navCurrentSection');
+  if (navLabel) navLabel.textContent = map[id] || 'Projects';
+}
+
+function initSections() {
+  // Show cover first, hide everything else
+  SECTIONS.forEach(s => {
+    const el = document.getElementById(s);
+    if (el && s !== 'cover') el.style.display = 'none';
+  });
+  // TOC links: make them call showSection
+  document.querySelectorAll('.toc-item a').forEach(a => {
+    const href = a.getAttribute('href');
+    if (href && href.startsWith('#')) {
+      const id = href.slice(1);
+      a.addEventListener('click', function(e) {
+        e.preventDefault();
+        showSection(id);
+      });
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', initSections);
+
+// ─── NAV DROPDOWN ──────────────────────────────────────────────
 function toggleNav() {
   document.getElementById('navMenu').classList.toggle('open');
 }
@@ -900,6 +981,45 @@ function closeNav() {
 }
 document.addEventListener('click', function(e) {
   if (!e.target.closest('.nav-dropdown')) closeNav();
+});
+
+// ─── ADD BACK BUTTONS AND FOOTERS TO ALL SECTIONS ──────────────
+document.addEventListener('DOMContentLoaded', function() {
+  // Add "← Contents" back button to top of each project/about page
+  const projectIds = ['project-01','project-02','project-03','project-04','project-05','project-06','project-07','about'];
+  projectIds.forEach(id => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const btn = document.createElement('button');
+    btn.className = 'back-btn';
+    btn.textContent = ' Contents';
+    btn.onclick = () => showSection('toc');
+    el.insertBefore(btn, el.firstChild);
+  });
+
+  // Add footer to all sections EXCEPT cover
+  const footer = `<footer class="site-footer">
+    <span>Xahria Santiago · Urban Planner &amp; GIS Analyst · Toronto, ON</span>
+    <div class="site-footer-links">
+      <a href="mailto:xahria.santiago@gmail.com">xahria.santiago@gmail.com</a>
+      <a href="https://linkedin.com/in/xahria-santiago" target="_blank">LinkedIn</a>
+    </div>
+  </footer>`;
+
+  SECTIONS.filter(id => id !== 'cover').forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.insertAdjacentHTML('beforeend', footer);
+  });
+
+  // Make entire TOC row clickable
+  document.querySelectorAll('.toc-item').forEach(item => {
+    const link = item.querySelector('a');
+    if (!link) return;
+    item.onclick = function(e) {
+      if (e.target.tagName === 'A') return; // let real links work normally
+      link.click();
+    };
+  });
 });
 </script>
 </body>
