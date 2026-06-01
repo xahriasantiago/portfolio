@@ -114,16 +114,13 @@
   .callout-produced p { color: var(--ink-mid); }
   .callout-produced strong { color: var(--ink); }
 
-  /* PDF LINK BUTTON */
-  .doc-link { display: inline-flex; align-items: center; gap: 8px; margin-top: 1rem; padding: 8px 16px; border: 1.5px solid var(--accent); border-radius: 4px; font-size: 13px; font-weight: 500; color: var(--accent); text-decoration: none; transition: background 0.15s; }
-  .doc-link:hover { background: var(--accent-light); }
-  .doc-link::before { content: "↗"; font-size: 12px; }
-  .doc-links-row { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem; }
-  .project-image { width: 100%; max-height: 480px; object-fit: contain; object-position: top left; border-radius: 4px; margin-top: 1.5rem; display: block; border: 1px solid var(--rule); background: var(--page); }
-  .project-image-caption { font-size: 12px; color: var(--ink-light); margin-top: 0.4rem; font-style: italic; max-width: 100%; }
-  .image-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 1.5rem; }
-  .image-pair img { width: 100%; height: 280px; object-fit: cover; object-position: center; border-radius: 4px; border: 1px solid var(--rule); margin-top: 0; }
-  .image-pair-caption { font-size: 12px; color: var(--ink-light); margin-top: 0.4rem; font-style: italic; grid-column: 1 / -1; }
+  /* IMAGE */
+  .project-image { width: 100%; height: auto; border-radius: 4px; margin-top: 1.5rem; display: block; border: 1px solid var(--rule); background: transparent; }
+  .project-image-caption { font-size: 12px; color: var(--ink-light); margin-top: 0.4rem; font-style: italic; }
+  .image-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 0; }
+  .image-pair-item { min-width: 0; }
+  .image-pair-item img { width: 100%; height: auto; border-radius: 4px; border: 1px solid var(--rule); display: block; }
+  .image-pair-item p { font-size: 12px; color: var(--ink-light); margin-top: 0.4rem; font-style: italic; }
 
   /* GIS PAGE: TABBED */
   .gis-page { min-height: 100vh; padding: 4rem; background: var(--white); page-break-after: always; }
@@ -381,6 +378,11 @@
       <div><p class="meta-label">Role</p><p class="meta-value">Graduate capstone team member; public health and quality of life lead</p></div>
       <div><p class="meta-label">Output</p><p class="meta-value">Community visioning document delivered to the City of Tucson</p></div>
       <div><p class="meta-label">Recognition</p><div class="award-badge">&#9733; Planning Excellence Gold Award</div></div>
+      <div style="grid-column: 1 / -1;"><div class="doc-links-row">
+        <a href="https://drive.google.com/file/d/1PJuJ3XjJN6rDyE_pdQ-L1gUWYA6hOAgJ/view?usp=sharing" class="doc-link" target="_blank">View full report</a>
+        <a href="docs/el_pueblo_flyer.pdf" class="doc-link" target="_blank">View recruitment flyer</a>
+        <a href="docs/el_pueblo_survey.pdf" class="doc-link" target="_blank">View community survey</a>
+      </div></div>
     </div>
   </div>
   <div class="project-body">
@@ -393,11 +395,6 @@
         <p>Delivered as a formal planning document to the City of Tucson and recognized with the <strong>2023 Planning Excellence Gold Award</strong>, the highest recognition in the University of Arizona's urban planning program. The document is now a reference resource for future planning of the El Pueblo Center area.</p>
       </div>
       <img src="images/el_pueblo_cover.jpg" alt="El Pueblo Community Resource Study cover" class="project-image">
-      <div class="doc-links-row">
-        <a href="https://drive.google.com/file/d/1PJuJ3XjJN6rDyE_pdQ-L1gUWYA6hOAgJ/view?usp=sharing" class="doc-link" target="_blank">View full report</a>
-        <a href="docs/el_pueblo_flyer.pdf" class="doc-link" target="_blank">View recruitment flyer</a>
-        <a href="docs/el_pueblo_survey.pdf" class="doc-link" target="_blank">View community survey</a>
-      </div>
     </div>
     <div>
       <div class="contribution-block">
@@ -448,7 +445,7 @@
         <p>Manufactured housing parcels have significantly less vegetation than single-family properties across all three cities, with MH units in park settings having the least of all. <strong>The vegetation gap between single-family and MH parcels ranges from 5% in Tucson to 9% in Phoenix,</strong> a measurable difference in heat exposure that comes down to how land is owned and managed, not just where it's located.</p>
       </div>
       <img src="images/heat_vulnerability_study_area.png" alt="Study area map showing three Arizona metropolitan areas: Phoenix-Mesa, Tucson, and Flagstaff" class="project-image">
-      <p class="project-image-caption">Study area map showing the three metropolitan areas in the analysis. Each city is shown with its urbanized footprint (dark gray) and a 5-mile buffer zone (light gray). Average temperatures reflect the significant climatic difference between the low-elevation desert cities and Flagstaff at higher elevation: Phoenix-Mesa (29.7°C), Tucson (28°C), and Flagstaff (17.1°C).</p>
+      <p class="project-image-caption">Study area map: Phoenix-Mesa (29.7°C avg), Tucson (28°C), and Flagstaff (17.1°C). Each city shown with urbanized footprint and 5-mile buffer zone.</p>
     </div>
     <div>
       <div class="contribution-block">
@@ -663,6 +660,7 @@
       <div><p class="meta-label">Context</p><p class="meta-value">University of Arizona Graduate Certificate in GIS</p></div>
       <div><p class="meta-label">Tools</p><p class="meta-value">ArcMap, Raster Calculator, Euclidean Distance, Zonal Statistics</p></div>
       <div><p class="meta-label">Period</p><p class="meta-value">Fall 2021</p></div>
+      <div><a href="docs/05a_solar_suitability.pdf" class="doc-link" target="_blank">View full analysis</a></div>
     </div>
     <div class="tab-panel-body">
     <div>
@@ -675,7 +673,6 @@
       </div>
       <img src="images/solar_suitability_results.jpg" alt="Weighted suitability surface for solar farm development across Maricopa County" class="project-image">
       <p class="project-image-caption">Final weighted suitability surface across Maricopa County, classified into high, moderate, and poor suitability zones based on 7 criteria including GHI (30%), substation proximity (20%), and slope (15%).</p>
-      <a href="docs/05a_solar_suitability.pdf" class="doc-link" target="_blank">View full analysis</a>
     </div>
     <div>
       <div class="contribution-block">
@@ -703,6 +700,7 @@
       <div><p class="meta-label">Context</p><p class="meta-value">University of Arizona Graduate Certificate in GIS</p></div>
       <div><p class="meta-label">Tools</p><p class="meta-value">ArcGIS Pro, Baltimore City Open Data</p></div>
       <div><p class="meta-label">Period</p><p class="meta-value">Fall 2021</p></div>
+      <div><a href="docs/05b_grocery_suitability.pdf" class="doc-link" target="_blank">View full analysis</a></div>
     </div>
     <div class="tab-panel-body">
     <div>
@@ -715,7 +713,6 @@
       </div>
       <img src="images/grocery_suitability_map.jpg" alt="Baltimore grocery store suitability analysis: scored community statistical areas" class="project-image">
       <p class="project-image-caption">Final suitability scores across Baltimore community statistical areas (0–3 scale). Darkest areas met three of four equity criteria; no area met all four, reflecting the complexity of overlapping need.</p>
-      <a href="docs/05b_grocery_suitability.pdf" class="doc-link" target="_blank">View full analysis</a>
     </div>
     <div>
       <div class="contribution-block">
@@ -743,6 +740,7 @@
       <div><p class="meta-label">Context</p><p class="meta-value">RNR 522, University of Arizona Graduate Certificate in GIS</p></div>
       <div><p class="meta-label">Tools</p><p class="meta-value">DJI Mavic 2 Pro, Pix4D Mapper, ArcGIS Pro</p></div>
       <div><p class="meta-label">Period</p><p class="meta-value">Fall 2023</p></div>
+      <div><a href="docs/05c_uas_thermal.pdf" class="doc-link" target="_blank">View full presentation</a></div>
     </div>
     <div class="tab-panel-body">
     <div>
@@ -754,11 +752,15 @@
         <p>A complete drone-to-map pipeline: orthomosaic, surface and terrain models, canopy height model, land cover classification (85% accuracy), and a land surface temperature layer broken down by cover type and slope direction. <strong>Very few planning students have direct experience collecting and processing drone-based thermal remote sensing data.</strong></p>
       </div>
       <div class="image-pair">
-        <img src="images/uas_orthomosaic.jpg" alt="RGB orthomosaic of the study area">
-        <img src="images/uas_land_cover.jpg" alt="Supervised land cover classification — 85% accuracy">
-        <p class="image-pair-caption">Left: RGB orthomosaic generated from 160 drone images. Right: supervised land cover classification (85% overall accuracy) — bare ground hottest at 19.2°C, water coolest at 12.5°C, east-facing slopes highest at 22.2°C.</p>
+        <div class="image-pair-item">
+          <img src="images/uas_orthomosaic.jpg" alt="RGB orthomosaic of the study area">
+          <p>RGB orthomosaic generated from 160 drone images showing the 15.6-acre study area.</p>
+        </div>
+        <div class="image-pair-item">
+          <img src="images/uas_land_cover.jpg" alt="Supervised land cover classification — 85% accuracy">
+          <p>Supervised land cover classification (85% accuracy). Bare ground hottest at 19.2°C; water coolest at 12.5°C.</p>
+        </div>
       </div>
-      <a href="docs/05c_uas_thermal.pdf" class="doc-link" target="_blank">View full presentation</a>
     </div>
     <div>
       <div class="contribution-block">
@@ -787,6 +789,7 @@
       <div><p class="meta-label">Context</p><p class="meta-value">LAR 570 / PLG 597, University of Arizona</p></div>
       <div><p class="meta-label">Tools</p><p class="meta-value">ArcGIS Pro, EPA Smart Location Database, RTAMS transit data</p></div>
       <div><p class="meta-label">Period</p><p class="meta-value">Fall 2021</p></div>
+      <div><a href="docs/05d_chicago_accessibility_matrix.pdf" class="doc-link" target="_blank">View full map series</a></div>
     </div>
     <div class="tab-panel-body">
     <div>
@@ -801,7 +804,6 @@
       <p class="project-image-caption">Composite accessibility matrix showing walkability index, grocery store status, and zero-car households across downtown Chicago census block groups.</p>
       <img src="images/chicago_red_line.jpg" alt="CTA Red Line schematic diagram" class="project-image">
       <p class="project-image-caption">CTA Red Line schematic diagram — a standalone transit map exercise prioritizing legibility over geographic accuracy.</p>
-      <a href="docs/05d_chicago_accessibility_matrix.pdf" class="doc-link" target="_blank">View full map series</a>
     </div>
     <div>
       <div class="contribution-block">
@@ -851,8 +853,8 @@
         <p class="section-label">Equity thread</p>
         <p>The plan's 20-year vision centres environmental justice across all six sectors, from clean energy tax districts in underserved neighbourhoods to urban agriculture incentive zones in food desert areas. Toronto's Eco-Roof Incentive Program is referenced as a model for green roof policy, a sign that <strong>Canadian cities are already doing some of this work</strong>.</p>
       </div>
-      <img src="images/chicago_eap_profile.jpg" alt="Chicago city profile page from the 2023 Environmental Action Plan" class="project-image">
-      <p class="project-image-caption">Chicago city profile: demographics, housing tenure, and transportation to work.</p>
+      <img src="images/chicago_eap_air_climate.jpg" alt="Chicago air and climate profile from the 2023 Environmental Action Plan" class="project-image">
+      <p class="project-image-caption">Air and climate profile — GHG emissions by sector, 30-year climate normals, and air quality benchmarks used to set the plan's reduction targets.</p>
     </div>
     <div>
       <div class="contribution-block">
@@ -887,6 +889,10 @@
       <div><p class="meta-label">Institution</p><p class="meta-value">University of Maryland CEEJH Lab, in partnership with Duke University</p></div>
       <div><p class="meta-label">Role</p><p class="meta-value">Research Intern; community engagement materials and public communication design</p></div>
       <div><p class="meta-label">Output</p><p class="meta-value">Disaster preparedness toolkits; EJ infographics and community engagement flyers</p></div>
+      <div style="grid-column: 1 / -1;"><div class="doc-links-row">
+        <a href="docs/07_coal_ash_infographic.png" class="doc-link" target="_blank">View coal ash infographic</a>
+        <a href="docs/07_north_charleston_flyer.png" class="doc-link" target="_blank">View focus group recruitment flyer</a>
+      </div></div>
     </div>
   </div>
   <div class="project-body">
@@ -913,10 +919,6 @@
         <div class="skills-grid">
           <span class="skill-tag">Environmental justice</span><span class="skill-tag">Public communication design</span><span class="skill-tag">Community outreach</span><span class="skill-tag">Infographic production</span><span class="skill-tag">Disaster preparedness</span><span class="skill-tag">Air quality monitoring</span><span class="skill-tag">Focus group recruitment</span><span class="skill-tag">Research translation</span>
         </div>
-      </div>
-      <div class="doc-links-row">
-        <a href="docs/07_coal_ash_infographic.png" class="doc-link" target="_blank">View coal ash infographic</a>
-        <a href="docs/07_north_charleston_flyer.png" class="doc-link" target="_blank">View focus group recruitment flyer</a>
       </div>
     </div>
   </div>
