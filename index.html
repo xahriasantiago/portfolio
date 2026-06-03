@@ -115,8 +115,16 @@
   .callout-produced strong { color: var(--ink); }
 
   /* IMAGE */
-  .project-image { width: 100%; height: auto; border-radius: 4px; margin-top: 1.5rem; display: block; border: 1px solid var(--rule); background: transparent; }
+  .project-image { width: 100%; height: auto; border-radius: 4px; margin-top: 1.5rem; display: block; border: 1px solid var(--rule); background: transparent; cursor: zoom-in; transition: opacity 0.15s; }
+  .project-image:hover { opacity: 0.92; }
   .project-image-caption { font-size: 12px; color: var(--ink-light); margin-top: 0.4rem; font-style: italic; }
+  /* Lightbox */
+  #lightbox { display: none; position: fixed; inset: 0; background: rgba(20,20,18,0.92); z-index: 9999; align-items: center; justify-content: center; padding: 2rem; cursor: zoom-out; }
+  #lightbox.active { display: flex; }
+  #lightbox img { max-width: 92vw; max-height: 90vh; border-radius: 4px; box-shadow: 0 8px 40px rgba(0,0,0,0.5); cursor: default; }
+  #lightbox-close { position: fixed; top: 1.25rem; right: 1.5rem; color: white; font-size: 1.8rem; line-height: 1; cursor: pointer; opacity: 0.7; font-weight: 300; }
+  #lightbox-close:hover { opacity: 1; }
+  #lightbox-caption { position: fixed; bottom: 1.5rem; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.65); font-size: 12px; font-style: italic; text-align: center; max-width: 600px; pointer-events: none; }
   .image-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 0; }
   .image-pair-item { min-width: 0; }
   .image-pair-item img { width: 100%; height: auto; border-radius: 4px; border: 1px solid var(--rule); display: block; }
@@ -151,6 +159,9 @@
   .sticky-nav-right { display: flex; align-items: center; gap: 1.5rem; }
   .sticky-nav-right a { color: var(--ink-mid); text-decoration: none; transition: color 0.15s; font-size: 12px; }
   .sticky-nav-right a:hover { color: var(--accent); }
+  .nav-arrow-btn { display: inline-flex; align-items: center; gap: 5px; height: 28px; padding: 0 10px; border: 1px solid var(--rule); border-radius: 4px; background: none; cursor: pointer; color: var(--ink-mid); font-size: 11px; font-family: 'DM Sans', sans-serif; font-weight: 500; transition: all 0.15s; white-space: nowrap; }
+  .nav-arrow-btn:hover:not(:disabled) { color: var(--accent); border-color: var(--accent); background: var(--accent-light); }
+  .nav-arrow-btn:disabled { opacity: 0.25; cursor: default; }
   .nav-dropdown { position: relative; }
   .nav-dropdown-btn { background: none; border: 1px solid var(--rule); border-radius: 4px; padding: 4px 10px; font-size: 12px; font-family: 'DM Sans', sans-serif; color: var(--ink-mid); cursor: pointer; display: flex; align-items: center; gap: 5px; transition: border-color 0.15s, color 0.15s; }
   .nav-dropdown-btn:hover { border-color: var(--accent); color: var(--accent); }
@@ -758,16 +769,8 @@
         <p class="section-label">What this produced</p>
         <p>A complete drone-to-map pipeline: orthomosaic, surface and terrain models, canopy height model, land cover classification (85% accuracy), and a land surface temperature layer broken down by cover type and slope direction. <strong>Very few planning students have direct experience collecting and processing drone-based thermal remote sensing data.</strong></p>
       </div>
-      <div class="image-pair">
-        <div class="image-pair-item">
-          <img src="images/uas_orthomosaic.jpg" alt="RGB orthomosaic of the study area">
-          <p>RGB orthomosaic generated from 160 drone images showing the 15.6-acre study area.</p>
-        </div>
-        <div class="image-pair-item">
-          <img src="images/uas_land_cover.jpg" alt="Supervised land cover classification — 85% accuracy">
-          <p>Supervised land cover classification (85% accuracy). Bare ground hottest at 19.2°C; water coolest at 12.5°C.</p>
-        </div>
-      </div>
+      <img src="images/uas_orthomosaic.jpg" alt="RGB orthomosaic of the study area" class="project-image">
+      <p class="project-image-caption">RGB orthomosaic generated from 160 drone images showing the 15.6-acre study area.</p>
     </div>
     <div>
       <div class="contribution-block">
@@ -785,6 +788,8 @@
           <span class="skill-tag">UAS flight operations</span><span class="skill-tag">DJI Mavic 2 Pro</span><span class="skill-tag">Pix4D photogrammetry</span><span class="skill-tag">Thermal remote sensing</span><span class="skill-tag">Land surface temperature</span><span class="skill-tag">Land cover classification</span><span class="skill-tag">ArcGIS Pro</span><span class="skill-tag">MATLAB</span><span class="skill-tag">Canopy height modelling</span><span class="skill-tag">Microclimate analysis</span>
         </div>
       </div>
+      <img src="images/uas_land_cover.jpg" alt="Supervised land cover classification — 85% accuracy" class="project-image" style="margin-top:1.5rem;">
+      <p class="project-image-caption">Supervised land cover classification (85% accuracy). Bare ground hottest at 19.2°C; water coolest at 12.5°C.</p>
     </div>
   </div>
 </div>
@@ -994,17 +999,44 @@ document.addEventListener('click', function(e) {
 
 // ─── ADD BACK BUTTONS AND FOOTERS TO ALL SECTIONS ──────────────
 document.addEventListener('DOMContentLoaded', function() {
-  // Add "← Contents" back button to top of each project/about page
-  const projectIds = ['project-01','project-02','project-03','project-04','project-05','project-06','project-07','about'];
-  projectIds.forEach(id => {
+  // Add "← Contents" back button + prev/next arrows to top of each project page
+  const projectIds = ['project-01','project-02','project-03','project-04','project-05','project-06','project-07'];
+  const projectShort = ['01 El Pueblo','02 Heat Vulnerability','03 Barcelona','04 Rocinha','05 GIS & Spatial','06 Chicago EAP','07 Community Engagement'];
+
+  projectIds.forEach((id, idx) => {
     const el = document.getElementById(id);
     if (!el) return;
+    const row = document.createElement('div');
+    row.style.cssText = 'display:flex; align-items:center; justify-content:space-between; margin-bottom:1.5rem;';
+
+    const btn = document.createElement('button');
+    btn.className = 'back-btn';
+    btn.style.margin = '0';
+    btn.textContent = ' Contents';
+    btn.onclick = () => showSection('toc');
+    row.appendChild(btn);
+
+    const arrows = document.createElement('div');
+    arrows.style.cssText = 'display:flex; align-items:center; gap:0.4rem;';
+    const prevDisabled = idx === 0 ? 'disabled' : '';
+    const nextDisabled = idx === projectIds.length - 1 ? 'disabled' : '';
+    arrows.innerHTML =
+      `<button class="nav-arrow-btn" ${prevDisabled} onclick="showSection('${projectIds[idx-1] || ''}')" title="Previous project"><svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M7.5 2L3.5 6L7.5 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>${idx > 0 ? projectShort[idx-1] : ''}</button>` +
+      `<button class="nav-arrow-btn" ${nextDisabled} onclick="showSection('${projectIds[idx+1] || ''}')" title="Next project">${idx < projectIds.length - 1 ? projectShort[idx+1] : ''}<svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M4.5 2L8.5 6L4.5 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>`;
+    row.appendChild(arrows);
+
+    el.insertBefore(row, el.firstChild);
+  });
+
+  // Add "← Contents" back button to about page (no arrows)
+  const about = document.getElementById('about');
+  if (about) {
     const btn = document.createElement('button');
     btn.className = 'back-btn';
     btn.textContent = ' Contents';
     btn.onclick = () => showSection('toc');
-    el.insertBefore(btn, el.firstChild);
-  });
+    about.insertBefore(btn, about.firstChild);
+  }
 
   // Add footer to all sections EXCEPT cover
   const footer = `<footer class="site-footer">
@@ -1030,6 +1062,38 @@ document.addEventListener('DOMContentLoaded', function() {
     };
   });
 });
+</script>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeLightbox(event)">
+  <span id="lightbox-close" onclick="closeLightbox()">&#x2715;</span>
+  <img id="lightbox-img" src="" alt="">
+  <div id="lightbox-caption"></div>
+</div>
+
+<script>
+// ── LIGHTBOX ──────────────────────────────────────────────────────────────────
+document.querySelectorAll('img.project-image').forEach(img => {
+  img.addEventListener('click', () => {
+    const caption = img.nextElementSibling && img.nextElementSibling.classList.contains('project-image-caption')
+      ? img.nextElementSibling.textContent : '';
+    document.getElementById('lightbox-img').src = img.src;
+    document.getElementById('lightbox-img').alt = img.alt;
+    document.getElementById('lightbox-caption').textContent = caption;
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  });
+});
+function closeLightbox(e) {
+  if (e && e.target === document.getElementById('lightbox-img')) return;
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeLightbox();
+});
+
+// ── PROJECT PREV / NEXT NAV — injected inline with back button (see DOMContentLoaded below)
 </script>
 </body>
 </html>
