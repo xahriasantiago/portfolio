@@ -88,7 +88,7 @@
   .contribution-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: 7px; }
   .skills-block { margin-bottom: 1.5rem; }
   .skills-grid { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.4rem; }
-  .skill-tag { font-size: 11.5px; background: var(--tag-bg); color: var(--ink-mid); padding: 3px 9px; border-radius: 4px; border: 1px solid var(--rule); }
+  .skill-tag { font-size: 11.5px; background: var(--tag-bg); color: var(--ink-mid); padding: 3px 9px; border-radius: 4px; border: 1px solid var(--rule); margin: 2px 4px 2px 0; display: inline-block; }
   .doc-links-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.75rem; }
   .doc-link { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border: 1.5px solid var(--accent); border-radius: 4px; font-size: 12px; font-weight: 500; color: var(--accent); text-decoration: none; transition: background 0.15s; white-space: nowrap; }
   .doc-link:hover { background: var(--accent-light); }
@@ -221,11 +221,11 @@
       <div class="nav-dropdown-menu" id="navMenu">
         <a href="#" onclick="showSection('project-01'); return false;"><span class="nav-item-num">01</span><span class="nav-item-text"><div class="nav-item-title">El Pueblo Community Resource Study</div><div class="nav-item-category">Community Planning · Gold Award</div></span></a>
         <a href="#" onclick="showSection('project-02'); return false;"><span class="nav-item-num">02</span><span class="nav-item-text"><div class="nav-item-title">Extreme Heat Vulnerability of Manufactured Housing</div><div class="nav-item-category">GIS Research · Published in Urban Studies</div></span></a>
-        <a href="#" onclick="showSection('project-03'); return false;"><span class="nav-item-num">03</span><span class="nav-item-text"><div class="nav-item-title">Barcelona Superblocks</div><div class="nav-item-category">Urban Design · Active Transportation</div></span></a>
-        <a href="#" onclick="showSection('project-04'); return false;"><span class="nav-item-num">04</span><span class="nav-item-text"><div class="nav-item-title">Rocinha: Urbanism of Brazil's Largest Favela</div><div class="nav-item-category">International Planning · Informal Settlements</div></span></a>
-        <a href="#" onclick="showSection('project-05'); return false;"><span class="nav-item-num">05</span><span class="nav-item-text"><div class="nav-item-title">GIS &amp; Spatial Analysis</div><div class="nav-item-category">6 Analyses · Water Demand · Site Suitability · Remote Sensing · Cartography</div></span></a>
-        <a href="#" onclick="showSection('project-06'); return false;"><span class="nav-item-num">06</span><span class="nav-item-text"><div class="nav-item-title">Chicago Environmental Action Plan</div><div class="nav-item-category">Environmental Planning · Climate Policy</div></span></a>
-        <a href="#" onclick="showSection('project-07'); return false;"><span class="nav-item-num">07</span><span class="nav-item-text"><div class="nav-item-title">Community Engagement &amp; Environmental Justice</div><div class="nav-item-category">UMD CEEJH Lab · EJ Research</div></span></a>
+        <a href="#" onclick="showSection('project-03'); return false;"><span class="nav-item-num">03</span><span class="nav-item-text"><div class="nav-item-title">GIS &amp; Spatial Analysis</div><div class="nav-item-category">6 Analyses · Water Demand · Site Suitability · Remote Sensing · Cartography</div></span></a>
+        <a href="#" onclick="showSection('project-04'); return false;"><span class="nav-item-num">04</span><span class="nav-item-text"><div class="nav-item-title">Chicago Environmental Action Plan</div><div class="nav-item-category">Environmental Planning · Climate Policy</div></span></a>
+        <a href="#" onclick="showSection('project-05'); return false;"><span class="nav-item-num">05</span><span class="nav-item-text"><div class="nav-item-title">Rocinha: Urbanism of Brazil's Largest Favela</div><div class="nav-item-category">International Planning · Informal Settlements</div></span></a>
+        <a href="#" onclick="showSection('project-06'); return false;"><span class="nav-item-num">06</span><span class="nav-item-text"><div class="nav-item-title">Community Engagement &amp; Environmental Justice</div><div class="nav-item-category">UMD CEEJH Lab · EJ Research</div></span></a>
+        <a href="#" onclick="showSection('project-07'); return false;"><span class="nav-item-num">07</span><span class="nav-item-text"><div class="nav-item-title">Barcelona Superblocks</div><div class="nav-item-category">Urban Design · Active Transportation</div></span></a>
       </div>
     </div>
   </div>
@@ -298,41 +298,41 @@
   <div class="toc-item">
     <span class="toc-num">03</span>
     <div class="toc-content">
-      <div class="toc-title"><a href="#project-03" style="color:inherit;text-decoration:none;">Barcelona Superblocks: Graduate City Report</a></div>
-      <div class="toc-meta">Academic, University of Arizona CAPLA, 2023</div>
-      <div class="toc-tags"><span class="toc-tag">Active transportation</span><span class="toc-tag">Urban design</span><span class="toc-tag">Public health</span><span class="toc-tag">Traffic calming</span></div>
-    </div>
-  </div>
-  <div class="toc-item">
-    <span class="toc-num">04</span>
-    <div class="toc-content">
-      <div class="toc-title"><a href="#project-04" style="color:inherit;text-decoration:none;">Rocinha: Urbanism of Brazil's Largest Favela</a></div>
-      <div class="toc-meta">Seminar Report, University of Arizona CAPLA, 2023</div>
-      <div class="toc-tags"><span class="toc-tag">International planning</span><span class="toc-tag">Informal settlements</span><span class="toc-tag">Infrastructure</span><span class="toc-tag">Community governance</span></div>
-    </div>
-  </div>
-  <div class="toc-item">
-    <span class="toc-num">05</span>
-    <div class="toc-content">
-      <div class="toc-title"><a href="#project-05" style="color:inherit;text-decoration:none;">GIS &amp; Spatial Analysis</a></div>
+      <div class="toc-title"><a href="#project-03" style="color:inherit;text-decoration:none;">GIS &amp; Spatial Analysis</a></div>
       <div class="toc-meta">Graduate Research &amp; Consulting, University of Arizona / Integral Consulting, 2022–2024</div>
       <div class="toc-tags"><span class="toc-tag">ArcGIS Pro</span><span class="toc-tag">Land cover classification</span><span class="toc-tag">Social vulnerability</span><span class="toc-tag">Site suitability</span><span class="toc-tag">UAS remote sensing</span><span class="toc-tag">Food access</span><span class="toc-tag">Renewable energy</span><span class="toc-tag">Cartographic design</span></div>
     </div>
   </div>
   <div class="toc-item">
-    <span class="toc-num">06</span>
+    <span class="toc-num">04</span>
     <div class="toc-content">
-      <div class="toc-title"><a href="#project-06" style="color:inherit;text-decoration:none;">Chicago Environmental Action Plan</a></div>
+      <div class="toc-title"><a href="#project-04" style="color:inherit;text-decoration:none;">Chicago Environmental Action Plan</a></div>
       <div class="toc-meta">Graduate Studio, University of Arizona, 2023</div>
       <div class="toc-tags"><span class="toc-tag">Environmental planning</span><span class="toc-tag">Climate policy</span><span class="toc-tag">Equity-centred planning</span><span class="toc-tag">Green infrastructure</span><span class="toc-tag">Energy planning</span></div>
     </div>
   </div>
   <div class="toc-item">
-    <span class="toc-num">07</span>
+    <span class="toc-num">05</span>
     <div class="toc-content">
-      <div class="toc-title"><a href="#project-07" style="color:inherit;text-decoration:none;">Community Engagement &amp; Environmental Justice, UMD</a></div>
+      <div class="toc-title"><a href="#project-05" style="color:inherit;text-decoration:none;">Rocinha: Urbanism of Brazil's Largest Favela</a></div>
+      <div class="toc-meta">Seminar Report, University of Arizona CAPLA, 2023</div>
+      <div class="toc-tags"><span class="toc-tag">International planning</span><span class="toc-tag">Informal settlements</span><span class="toc-tag">Infrastructure</span><span class="toc-tag">Community governance</span></div>
+    </div>
+  </div>
+  <div class="toc-item">
+    <span class="toc-num">06</span>
+    <div class="toc-content">
+      <div class="toc-title"><a href="#project-06" style="color:inherit;text-decoration:none;">Community Engagement &amp; Environmental Justice, UMD</a></div>
       <div class="toc-meta">Research Internship, University of Maryland CEEJH Lab, 2020–2021</div>
       <div class="toc-tags"><span class="toc-tag">Environmental justice</span><span class="toc-tag">Public communication</span><span class="toc-tag">Community outreach</span><span class="toc-tag">Disaster preparedness</span></div>
+    </div>
+  </div>
+  <div class="toc-item">
+    <span class="toc-num">07</span>
+    <div class="toc-content">
+      <div class="toc-title"><a href="#project-07" style="color:inherit;text-decoration:none;">Barcelona Superblocks: Graduate City Report</a></div>
+      <div class="toc-meta">Academic, University of Arizona CAPLA, 2023</div>
+      <div class="toc-tags"><span class="toc-tag">Active transportation</span><span class="toc-tag">Urban design</span><span class="toc-tag">Public health</span><span class="toc-tag">Traffic calming</span></div>
     </div>
   </div>
 </div>
@@ -483,97 +483,7 @@
 </div>
 
 <!-- PROJECT 03: BARCELONA -->
-<div id="project-03" class="project-page">
-  <div class="project-header">
-    <div class="project-header-left">
-      <p class="project-num">Urban Design &amp; Active Transportation</p>
-      <h2 class="project-title">Barcelona Superblocks: Graduate City Report</h2>
-      <p class="project-context">Academic Report, University of Arizona CAPLA, Transportation &amp; Land Use Planning, 2023</p>
-    </div>
-    <div class="project-header-right">
-      <div><p class="meta-label">Course</p><p class="meta-value">PLG568: Transportation and Land Use Planning</p></div>
-      <div><p class="meta-label">Role</p><p class="meta-value">Sole author</p></div>
-      <div><p class="meta-label">Focus</p><p class="meta-value">Pedestrianization, traffic calming, public space activation, health outcomes</p></div>
-      <div><a href="docs/03_barcelona.pdf" class="doc-link" target="_blank">View full presentation</a></div>
-    </div>
-  </div>
-  <div class="project-body">
-    <div>
-      <p class="section-label">Overview</p>
-      <p class="project-overview">This report examined Barcelona's Superblocks program, a city-scale urban mobility intervention that clusters nine city blocks into car-free interior zones, reroutes through-traffic to perimeter roads, and reclaims interior streets for pedestrian use and community activity.</p>
-      <p class="project-overview">The report analyzed the design logic and implementation of the Eixample Superblock, measured outcomes across air quality, noise, and active transportation, and drew out the planning principles that could apply elsewhere. It also engaged critically with equity concerns around the program, particularly gentrification pressure and who ends up benefiting from public space improvements.</p>
-      <div class="callout callout-context">
-        <p class="section-label" style="color: var(--blue);">Planning context</p>
-        <p>Car-centric street design is one of the most persistent barriers to healthy, livable cities. The Superblocks model shows how cities can reclaim street space in stages, with documented reductions in NO2 concentrations, road traffic noise, and urban heat, <strong>without requiring wholesale infrastructure reconstruction</strong>.</p>
-      </div>
-    </div>
-    <div>
-      <div class="contribution-block">
-        <p class="section-label">What the report covered</p>
-        <div class="contribution-item"><span class="contribution-dot"></span><span>Design logic of the Superblock model: how traffic is rerouted, how streets are redesigned, and how public space gets programmed once cars are removed</span></div>
-        <div class="contribution-item"><span class="contribution-dot"></span><span>Measured outcomes including air quality improvements, reduced noise exposure, and increased active transportation uptake</span></div>
-        <div class="contribution-item"><span class="contribution-dot"></span><span>Public health benefits tied to more walkable streets, including reduced stress and more opportunities for physical activity</span></div>
-        <div class="contribution-item"><span class="contribution-dot"></span><span>Equity and displacement concerns raised by residents and researchers, and how the program has responded to them</span></div>
-        <div class="contribution-item"><span class="contribution-dot"></span><span>Transferability to North American cities: what conditions need to be in place for this kind of intervention to work</span></div>
-      </div>
-      <div class="skills-block">
-        <p class="section-label">Methods &amp; tools</p>
-        <div class="skills-grid">
-          <span class="skill-tag">Transportation policy</span><span class="skill-tag">Active transportation</span><span class="skill-tag">Health impact assessment</span><span class="skill-tag">Urban design</span><span class="skill-tag">Traffic calming</span><span class="skill-tag">Equity analysis</span><span class="skill-tag">International case study</span><span class="skill-tag">Policy transfer</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- PROJECT 04: ROCINHA -->
-<div id="project-04" class="project-page">
-  <div class="project-header">
-    <div class="project-header-left">
-      <p class="project-num">International Planning</p>
-      <h2 class="project-title">Rocinha: Critical Issues in Favela Urbanism</h2>
-      <p class="project-context">Seminar Report, University of Arizona CAPLA, International Planning, 2023</p>
-    </div>
-    <div class="project-header-right">
-      <div><p class="meta-label">Course</p><p class="meta-value">PLG696D: International Planning, Dr. Seth Okyere</p></div>
-      <div><p class="meta-label">Role</p><p class="meta-value">Sole author</p></div>
-      <div><p class="meta-label">Location</p><p class="meta-value">Rocinha, Rio de Janeiro, Brazil — population 150,000–200,000</p></div>
-      <div><a href="docs/04_rocinha.pdf" class="doc-link" target="_blank">View full report</a></div>
-    </div>
-  </div>
-  <div class="project-body">
-    <div>
-      <p class="section-label">Overview</p>
-      <p class="project-overview">This report analyzed the critical urbanism challenges facing Rocinha, an informal settlement of up to 200,000 residents on the hillside of Dois Irmãos mountain in Rio de Janeiro's southern zone. It sits between two of the city's most affluent neighborhoods, a geographic reality that shapes both its political visibility and the nature of the government interventions it has received.</p>
-      <p class="project-overview">The report covered five interconnected issues: extreme construction density, tuberculosis rates eleven times Brazil's national average, natural hazard vulnerability, waste and wastewater management failure, and poor integration with the formal city. It evaluated the Favela-Bairro program (1995–2008) and the PAC Growth Acceleration Program (2007–2014).</p>
-      <div class="callout callout-hard">
-        <p class="section-label" style="color: var(--purple);">What made this hard</p>
-        <p>The PAC program spent R$160 million in Rocinha and produced a celebrated footbridge while largely bypassing basic sanitation. Evaluating why well-funded interventions fall short requires <strong>separating political optics from resident need</strong>. Understanding how pressure to perform for international audiences ahead of the 2014 World Cup and 2016 Olympics shaped what got built and what got left out was central to that analysis.</p>
-      </div>
-      <img src="images/rocinha_cover.jpg" alt="Rocinha favela at night, Rio de Janeiro" class="project-image">
-      <p class="project-image-caption">Rocinha, Rio de Janeiro. Brazil's largest favela, home to an estimated 150,000–200,000 residents on the hillside of Dois Irmãos mountain.</p>
-    </div>
-    <div>
-      <div class="contribution-block">
-        <p class="section-label">What the report covered</p>
-        <div class="contribution-item"><span class="contribution-dot"></span><span>Detailed analysis of five intersecting infrastructure and public health challenges, with supporting data and spatial context</span></div>
-        <div class="contribution-item"><span class="contribution-dot"></span><span>Critical review of the Favela-Bairro program, including a 97% increase in housing prices within upgraded favelas between 1995 and 1997 and the displacement that followed</span></div>
-        <div class="contribution-item"><span class="contribution-dot"></span><span>Analysis of the PAC program's gap between stated ambitions and actual delivery, looking at the role of the World Cup and Olympics and how residents responded</span></div>
-        <div class="contribution-item"><span class="contribution-dot"></span><span>Recommendation for MIT's LiDAR mapping initiative as a foundation for genuine participatory planning in informal settlements</span></div>
-        <div class="contribution-item"><span class="contribution-dot"></span><span>Engagement with Southern urbanism theory, informal settlement governance, and urban metabolism frameworks</span></div>
-      </div>
-      <div class="skills-block">
-        <p class="section-label">Methods &amp; tools</p>
-        <div class="skills-grid">
-          <span class="skill-tag">International planning</span><span class="skill-tag">Informal settlements</span><span class="skill-tag">Infrastructure analysis</span><span class="skill-tag">Program evaluation</span><span class="skill-tag">Displacement &amp; equity</span><span class="skill-tag">Participatory planning</span><span class="skill-tag">Public health</span><span class="skill-tag">Long-form analytical writing</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- PROJECT 05: GIS TABBED -->
-<div id="project-05" class="gis-page">
+<div id="project-03" class="gis-page">
   <div class="project-header">
     <div class="project-header-left">
       <p class="project-num">GIS &amp; Spatial Analysis</p>
@@ -585,6 +495,8 @@
       <div><p class="meta-label">Tabs</p><p class="meta-value">Water Demand & Climate · Social Vulnerability · Solar Suitability · Grocery Suitability · UAS Thermal · Cartographic Design</p></div>
     </div>
   </div>
+
+  <p style="font-size: 14px; color: var(--ink-light); margin: 0 0 1rem;">Six analyses spanning climate adaptation, social vulnerability, site suitability, and cartographic design.</p>
 
   <div class="tab-bar">
     <button class="tab-btn active" onclick="showTab('water')">Water Demand &amp; Climate Change</button>
@@ -845,7 +757,7 @@
 </div>
 
 <!-- PROJECT 06: CHICAGO ENVIRONMENTAL ACTION PLAN -->
-<div id="project-06" class="project-page">
+<div id="project-04" class="project-page">
   <div class="project-header">
     <div class="project-header-left">
       <p class="project-num">Environmental Planning</p>
@@ -893,7 +805,53 @@
 </div>
 
 <!-- PROJECT 07: UMD -->
-<div id="project-07" class="project-page">
+<div id="project-05" class="project-page">
+  <div class="project-header">
+    <div class="project-header-left">
+      <p class="project-num">International Planning</p>
+      <h2 class="project-title">Rocinha: Critical Issues in Favela Urbanism</h2>
+      <p class="project-context">Seminar Report, University of Arizona CAPLA, International Planning, 2023</p>
+    </div>
+    <div class="project-header-right">
+      <div><p class="meta-label">Course</p><p class="meta-value">PLG696D: International Planning, Dr. Seth Okyere</p></div>
+      <div><p class="meta-label">Role</p><p class="meta-value">Sole author</p></div>
+      <div><p class="meta-label">Location</p><p class="meta-value">Rocinha, Rio de Janeiro, Brazil — population 150,000–200,000</p></div>
+      <div><a href="docs/04_rocinha.pdf" class="doc-link" target="_blank">View full report</a></div>
+    </div>
+  </div>
+  <div class="project-body">
+    <div>
+      <p class="section-label">Overview</p>
+      <p class="project-overview">This report analyzed the critical urbanism challenges facing Rocinha, an informal settlement of up to 200,000 residents on the hillside of Dois Irmãos mountain in Rio de Janeiro's southern zone. It sits between two of the city's most affluent neighborhoods, a geographic reality that shapes both its political visibility and the nature of the government interventions it has received.</p>
+      <p class="project-overview">The report covered five interconnected issues: extreme construction density, tuberculosis rates eleven times Brazil's national average, natural hazard vulnerability, waste and wastewater management failure, and poor integration with the formal city. It evaluated the Favela-Bairro program (1995–2008) and the PAC Growth Acceleration Program (2007–2014).</p>
+      <div class="callout callout-hard">
+        <p class="section-label" style="color: var(--purple);">What made this hard</p>
+        <p>The PAC program spent R$160 million in Rocinha and produced a celebrated footbridge while largely bypassing basic sanitation. Evaluating why well-funded interventions fall short requires <strong>separating political optics from resident need</strong>. Understanding how pressure to perform for international audiences ahead of the 2014 World Cup and 2016 Olympics shaped what got built and what got left out was central to that analysis.</p>
+      </div>
+      <img src="images/rocinha_cover.jpg" alt="Rocinha favela at night, Rio de Janeiro" class="project-image">
+      <p class="project-image-caption">Rocinha, Rio de Janeiro. Brazil's largest favela, home to an estimated 150,000–200,000 residents on the hillside of Dois Irmãos mountain.</p>
+    </div>
+    <div>
+      <div class="contribution-block">
+        <p class="section-label">What the report covered</p>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Detailed analysis of five intersecting infrastructure and public health challenges, with supporting data and spatial context</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Critical review of the Favela-Bairro program, including a 97% increase in housing prices within upgraded favelas between 1995 and 1997 and the displacement that followed</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Analysis of the PAC program's gap between stated ambitions and actual delivery, looking at the role of the World Cup and Olympics and how residents responded</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Recommendation for MIT's LiDAR mapping initiative as a foundation for genuine participatory planning in informal settlements</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Engagement with Southern urbanism theory, informal settlement governance, and urban metabolism frameworks</span></div>
+      </div>
+      <div class="skills-block">
+        <p class="section-label">Methods &amp; tools</p>
+        <div class="skills-grid">
+          <span class="skill-tag">International planning</span><span class="skill-tag">Informal settlements</span><span class="skill-tag">Infrastructure analysis</span><span class="skill-tag">Program evaluation</span><span class="skill-tag">Displacement &amp; equity</span><span class="skill-tag">Participatory planning</span><span class="skill-tag">Public health</span><span class="skill-tag">Long-form analytical writing</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECT 05: GIS TABBED -->
+<div id="project-06" class="project-page">
   <div class="project-header">
     <div class="project-header-left">
       <p class="project-num">Community Engagement &amp; Environmental Justice</p>
@@ -1004,7 +962,7 @@ document.addEventListener('click', function(e) {
 document.addEventListener('DOMContentLoaded', function() {
   // Add "← Contents" back button + prev/next arrows to top of each project page
   const projectIds = ['project-01','project-02','project-03','project-04','project-05','project-06','project-07'];
-  const projectShort = ['01 El Pueblo','02 Heat Vulnerability','03 Barcelona','04 Rocinha','05 GIS & Spatial','06 Chicago EAP','07 Community Engagement'];
+  const projectShort = ['01 El Pueblo','02 Heat Vulnerability','03 GIS & Spatial','04 Chicago EAP','05 Rocinha','06 Community Engagement','07 Barcelona'];
 
   projectIds.forEach((id, idx) => {
     const el = document.getElementById(id);
@@ -1068,6 +1026,50 @@ document.addEventListener('DOMContentLoaded', function() {
 </script>
 
 <!-- LIGHTBOX -->
+<div id="project-07" class="project-page">
+  <div class="project-header">
+    <div class="project-header-left">
+      <p class="project-num">Urban Design &amp; Active Transportation</p>
+      <h2 class="project-title">Barcelona Superblocks: Graduate City Report</h2>
+      <p class="project-context">Academic Report, University of Arizona CAPLA, Transportation &amp; Land Use Planning, 2023</p>
+    </div>
+    <div class="project-header-right">
+      <div><p class="meta-label">Course</p><p class="meta-value">PLG568: Transportation and Land Use Planning</p></div>
+      <div><p class="meta-label">Role</p><p class="meta-value">Sole author</p></div>
+      <div><p class="meta-label">Focus</p><p class="meta-value">Pedestrianization, traffic calming, public space activation, health outcomes</p></div>
+      <div><a href="docs/03_barcelona.pdf" class="doc-link" target="_blank">View full presentation</a></div>
+    </div>
+  </div>
+  <div class="project-body">
+    <div>
+      <p class="section-label">Overview</p>
+      <p class="project-overview">This report examined Barcelona's Superblocks program, a city-scale urban mobility intervention that clusters nine city blocks into car-free interior zones, reroutes through-traffic to perimeter roads, and reclaims interior streets for pedestrian use and community activity.</p>
+      <p class="project-overview">The report analyzed the design logic and implementation of the Eixample Superblock, measured outcomes across air quality, noise, and active transportation, and drew out the planning principles that could apply elsewhere. It also engaged critically with equity concerns around the program, particularly gentrification pressure and who ends up benefiting from public space improvements.</p>
+      <div class="callout callout-context">
+        <p class="section-label" style="color: var(--blue);">Planning context</p>
+        <p>Car-centric street design is one of the most persistent barriers to healthy, livable cities. The Superblocks model shows how cities can reclaim street space in stages, with documented reductions in NO2 concentrations, road traffic noise, and urban heat, <strong>without requiring wholesale infrastructure reconstruction</strong>.</p>
+      </div>
+    </div>
+    <div>
+      <div class="contribution-block">
+        <p class="section-label">What the report covered</p>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Design logic of the Superblock model: how traffic is rerouted, how streets are redesigned, and how public space gets programmed once cars are removed</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Measured outcomes including air quality improvements, reduced noise exposure, and increased active transportation uptake</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Public health benefits tied to more walkable streets, including reduced stress and more opportunities for physical activity</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Equity and displacement concerns raised by residents and researchers, and how the program has responded to them</span></div>
+        <div class="contribution-item"><span class="contribution-dot"></span><span>Transferability to North American cities: what conditions need to be in place for this kind of intervention to work</span></div>
+      </div>
+      <div class="skills-block">
+        <p class="section-label">Methods &amp; tools</p>
+        <div class="skills-grid">
+          <span class="skill-tag">Transportation policy</span><span class="skill-tag">Active transportation</span><span class="skill-tag">Health impact assessment</span><span class="skill-tag">Urban design</span><span class="skill-tag">Traffic calming</span><span class="skill-tag">Equity analysis</span><span class="skill-tag">International case study</span><span class="skill-tag">Policy transfer</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECT 04: ROCINHA -->
 <div id="lightbox" onclick="closeLightbox(event)">
   <span id="lightbox-close" onclick="closeLightbox()">&#x2715;</span>
   <div id="lightbox-img-wrap">
